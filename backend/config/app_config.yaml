@@ -1,0 +1,25 @@
+api:
+  host: "0.0.0.0"
+  port: 8000
+
+scheduler:
+  tick_seconds: 5
+  run_on_startup: true
+  python_bin: "python"
+  workdir: "."
+  script_timeout_seconds: 3600
+
+jobs:
+  etl:
+    interval_seconds: 900
+    script: "gdelt_rss_ETL.py"
+
+  pipeline:
+    interval_seconds: 3600
+    scripts:
+      - "embedding_and_cluster.py"
+      - "llm_summarize.py"
+    run_etl_before_pipeline: true
+
+sqlite:
+  path: "result.sqlite"

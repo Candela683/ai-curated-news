@@ -1,0 +1,1679 @@
+2026-03-27 15:01:48,301 | INFO | pipeline runner 已启动
+2026-03-27 15:01:48,302 | INFO | BASE_DIR=C:\code\news\ai-curated-news\backend
+2026-03-27 15:01:48,302 | INFO | RUN_INTERVAL_SECONDS=900
+2026-03-27 15:01:48,302 | INFO | SCRIPT_TIMEOUT_SECONDS=840
+2026-03-27 15:01:48,302 | INFO | ========== 新一轮 pipeline 开始 ==========
+2026-03-27 15:01:48,302 | INFO | 开始执行脚本: gdelt_rss_ETL.py
+2026-03-27 15:01:50,563 | INFO | [gdelt_rss_ETL.py stdout]
+Batch published_at: 2026-03-27T07:01:48Z
+Rows before type filter: 4557, after: 371
+Type counts:
+ type
+Quality newspaper/magazine    303
+Tabloid newspaper              44
+Commercial broadcaster         15
+Public broadcaster              9
+Done. batch_published_at=2026-03-27T07:01:48Z
+2026-03-27 15:01:50,564 | INFO | 脚本执行成功: gdelt_rss_ETL.py | duration=2.26s
+2026-03-27 15:01:50,564 | INFO | 开始执行脚本: embedding_and_cluster.py
+2026-03-27 15:02:13,081 | INFO | [embedding_and_cluster.py stdout]
+��������: ��� 24 Сʱ
+���ڿ�ʼ(UTC): 2026-03-26T07:01:55Z
+���ڽ���(UTC): 2026-03-27T07:01:55Z
+����ԭʼ������: 2464
+��ϴ��������: 2464
+ʶ����ַ��: link
+����������������: 581
+active clusters ����: 53
+ƥ�䵽�ɴر�����: 13
+δƥ�������: 568
+
+=== ���ν�� ===
+������⵽�ɴصı�����: 13
+��ѡ�´ض��ζ���ؾɴصĴ���: 1
+unmatched д�������: 350
+�½� cluster ��: 1
+���ڶ��η������� cluster ��: 25
+cluster_size_history ������¼��: 11
+cluster.sqlite �Ѹ��¡�
+2026-03-27 15:02:13,081 | WARNING | [embedding_and_cluster.py stderr]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]
+Loading weights: 100%|��������������������| 199/199 [00:00<00:00, 8902.25it/s]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+
+Batches:   0%|          | 0/10 [00:00<?, ?it/s]
+Batches:  10%|��         | 1/10 [00:00<00:02,  3.63it/s]
+Batches:  20%|����        | 2/10 [00:00<00:01,  4.64it/s]
+Batches:  30%|������       | 3/10 [00:00<00:01,  5.43it/s]
+Batches:  40%|��������      | 4/10 [00:00<00:00,  6.15it/s]
+Batches:  50%|����������     | 5/10 [00:00<00:00,  6.83it/s]
+Batches:  60%|������������    | 6/10 [00:00<00:00,  7.48it/s]
+Batches:  70%|��������������   | 7/10 [00:01<00:00,  7.83it/s]
+Batches:  80%|����������������  | 8/10 [00:01<00:00,  8.34it/s]
+Batches: 100%|��������������������| 10/10 [00:01<00:00,  7.89it/s]
+2026-03-27 15:02:13,082 | INFO | 脚本执行成功: embedding_and_cluster.py | duration=22.52s
+2026-03-27 15:02:13,082 | INFO | 开始执行脚本: llm_summarize.py
+2026-03-27 15:06:36,736 | INFO | [llm_summarize.py stdout]
+clusters_to_summarize=39 min_delta=3
+[1] cluster=15 size=1614 status=ok
+url: https://www.dailyrecord.co.uk/lifestyle/dear-coleen-its-stressful-living-36930252
+output preview:
+Here's a categorized summary of the provided URLs, grouped into clusters based on their domains and content themes:
+
+---
+
+### **Politics and Current Events**
+- **l**avozdegalicia.es/noticia/pol��tica/...  
+- **l**avozdegalicia.es/noticia/actualidad/...  
+- **l**emonde.fr/international/...  
+- **m**erkur.de/politik/ (if available)  
+
+---
+
+### **Culture and Arts**
+- **l**avozdegalicia.es/noticia/cultura/...  
+- **o**rf.at/magazin/stories/...  
+- **e**strepublicain.fr/culture/...  
+
+---
+
+### **Sports and Leisure**
+- **l**avozdegalicia.es/noticia/deportes/...  
+- **m**erkur.de/sport/...  
+- **l**aprovence.com/sport/...  
+- **l**avozdegalicia.es/noticia/ocio/...  
+
+---
+
+### **Technology and Digital**
+- **l**avozdegalicia.es/noticia/reto-digital/...  
+- **m**erkur.de/technik/...  
+
+---
+
+### **Business and Economy**
+- **c**nbc.com/...  
+- **e**conomictimes.indiatimes.com/finanzas/...  
+
+---
+
+### **Consumer and Health**
+- **m**erkur.de/verbraucher/... (Consumer/Marketplace)  
+- **m**erkur.de/ge
+--------------------------------------------------------------------------------
+[2] cluster=31 size=123 status=skip_error
+url: https://www.laopiniondemurcia.es/autores/gabriel-santamarina.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[3] cluster=16 size=32 status=skip_error
+url: http://www.elpuntavui.cat/?task=mescriteri.mes&format=raw&criteri=subcanal&t=20260327024037&id=3376&itemidmes=1030&subsegment=7&count=6&start=8
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[4] cluster=45 size=24 status=skip_error
+url: https://www.nbclosangeles.com/tag/jeffrey-epstein/
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[5] cluster=8 size=18 status=skip_error
+url: https://timesofindia.indiatimes.com/etimes/trending/ram-navami-surya-tilak-to-be-performed-on-ram-lalla-idol-at-ayodhya-ram-mandir-timings-muhurat-visiting-slots-and-more/articleshow/129839438.cms
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[6] cluster=30 size=16 status=ok
+url: https://www.zeit.de/news/2026-03/27/buckelwal-befreit-sich-in-der-nacht-von-ostsee-sandbank
+output preview:
+��ͷ���ڵ¹�ʯ���ݲ��޵ĺ���ɳ���ϳɹ���������ر�����ʾ�þ�����ҹ����������������Ŀǰ�Ѳ�����Ӱ������ý��ȷ�����ѻ�ȡ�
+--------------------------------------------------------------------------------
+[7] cluster=29 size=12 status=ok
+url: https://www.n-tv.de/regionales/hessen/Schulferien-beginnen-mit-niedrigen-Temperaturen-und-Regen-id30517996.html
+output preview:
+�¹����������ĩ���½ϵͣ����м�Ъ�Խ��꣬ͬʱ��ѧ�����ڼ�Ҳ�����������������
+--------------------------------------------------------------------------------
+[8] cluster=74 size=12 status=skip_error
+url: https://www.huelvainformacion.es/semanasanta/estrenos-hermandades-viernes-dolores-semana-santa-huelva_0_2006293885.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[9] cluster=78 size=11 status=ok
+url: https://www.sbs.com.au/news/article/iran-war-first-month-outlook/ps5s53hor
+output preview:
+��������ͨ�����շ�վ���ƶȼ�ǿ�����ڻ���ľ�Ⱥ�Ͽ�Ŀ��ƣ�ͬʱ�����������˻��Կ����ʣ����о����������������Ƴ������š�
+--------------------------------------------------------------------------------
+[10] cluster=55 size=10 status=skip_error
+url: https://www.express.de:443/koeln/feuerdrama-in-koeln-wehr-macht-in-der-nacht-schrecklichen-fund-1253163
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[11] cluster=56 size=10 status=skip_error
+url: https://www.nzz.ch/feuilleton/christian-ulmen-und-collien-fernandes-maenner-im-bekenntniszwang-ld.1931035
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[12] cluster=1 size=9 status=skip_error
+url: https://www.sfgate.com/news/article/north-carolina-s-photo-voter-id-mandate-can-22153940.php
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[13] cluster=58 size=8 status=skip_error
+url: http://www.tz.de/verbraucher/massives-flug-chaos-an-diesen-orten-ausgerechnet-an-ostern-beliebtem-urlaubsland-droht-zr-94232388.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[14] cluster=60 size=8 status=skip_error
+url: https://www.stern.de/panorama/weltgeschehen/gestrandeter-buckelwal--meeressaeuger-ist-frei---angebliche-sichtung-vor-scharbeutz-37250004.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[15] cluster=77 size=8 status=skip_error
+url: https://www.stern.de/familie/schwarze-spuele-reinigen--so-loesen-sie-laestigen-kalk-und-schmutz-35681062.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[16] cluster=10 size=7 status=skip_error
+url: https://www.nbcdfw.com/tag/celina/
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[17] cluster=33 size=7 status=skip_error
+url: https://www.ilfattoquotidiano.it/2026/03/27/referendum-giustizia-no-meloni-news/8337213/
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[18] cluster=52 size=7 status=ok
+url: https://www.laprovincia.es/economia/2026/03/27/juan-gabriel-rodriguez-automatizacion-ia-aumentando-desigualdad-128470515.html
+output preview:
+ר��ָ���Զ������˹����ܼ������ڼӾ���᲻ƽ�����������Լ�����չ����Ӱ������ۡ�
+--------------------------------------------------------------------------------
+[19] cluster=66 size=7 status=ok
+url: https://www.lemonde.fr/economie/article/2026/03/27/defense-pour-acheter-beaucoup-de-munitions-la-france-en-appelle-aux-investisseurs-prives_6674481_3234.html
+output preview:
+������G7�ⳤ�������ƶ�ά���ڿ�����λ��ͬʱ�Ӵ����ɹ���֧���ڿ������ڿ������ٶ���˹�������ƣ���ƽ̸�г���ͣ�ͣ����ƽ��š�
+--------------------------------------------------------------------------------
+[20] cluster=67 size=7 status=skip_error
+url: https://www.laopiniondemurcia.es/cultura/2026/03/27/son-obras-teatro-semana-region-128463829.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[21] cluster=71 size=7 status=skip_error
+url: https://timesofindia.indiatimes.com/entertainment/hindi/bollywood/box-office/url-dhurandhar-2-the-revenge-box-office-collection-day-9-live-ranveer-singh-rakesh-bedi-sanjay-dutt-arjun-rampal-r-madhavan-starrer-spy-thriller-inches-closer-to-netting-rs-700-crore-in-india-chases-rs-840-crore-lifetime-record-of-dhurandhar-1/articleshow/129839191.cms
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[22] cluster=72 size=7 status=skip_error
+url: https://kaernten.orf.at/stories/3347609/
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[23] cluster=46 size=6 status=ok
+url: https://www.welt.de/regionales/bayern/article69c61ab2af187d606b81486f/radfahrer-stirbt-nach-zusammenstoss-mit-lastwagen.html
+output preview:
+һ�����г����������뿨����ײ�¹��в������������¼��ڶ��������Դ�б�������
+--------------------------------------------------------------------------------
+[24] cluster=59 size=6 status=skip_error
+url: https://www.focus.de/kultur/stars/melissa-naschenweng-filmkuss-mit-ferdinand-seebacher-hat-ueberwindung-gekostet_f6448f39-e556-446f-923a-8047604e9f8a.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[25] cluster=61 size=6 status=skip_error
+url: https://larepublica.pe/autor/rosmery-tapara
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[26] cluster=62 size=6 status=skip_error
+url: https://www.sudouest.fr/charente-maritime/royan/royan-la-journee-des-orchestres-promet-un-festival-de-musiques-ce-samedi-28450691.php
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[27] cluster=63 size=6 status=ok
+url: https://www.focus.de/finanzen/boerse/noch-nicht-am-ende-appell-von-ex-vw-chef-bei-lanz_b5bdaba9-5f6f-4226-bab0-2e8c872ead5a.html
+output preview:
+ǰVW��ϯִ�йٷ����������ơ����ǻ�û�е���ͷ����ΪLanz����ϣ���������Ϣ�ڶ��ý�屻������
+--------------------------------------------------------------------------------
+[28] cluster=65 size=6 status=ok
+url: https://www.torinotoday.it/notizie/mirafiori-sud/
+output preview:
+���գ�����Mirafiori Sud��������������ע�����Ǹõ�������Ҫ��̬��
+--------------------------------------------------------------------------------
+[29] cluster=69 size=6 status=ok
+url: https://elpais.com/deportes/futbol/2026-03-27/espana-serbia-horario-y-donde-ver-el-partido-amistoso-de-la-seleccion.html
+output preview:
+������������ά�ǵ��������Լ���϶����Ħ�����������������У����ֱ��ʱ��͹ۿ������ѹ���������������Ϊ�����������ŵ������������Կɹ�ע�������µ�ʵʱת����Ϣ��
+--------------------------------------------------------------------------------
+[30] cluster=70 size=6 status=ok
+url: https://www.huelvainformacion.es/huelva/cambios-autobuses-paradas-taxis-cortes-trafico-semana-santa-huelva_0_2006300202.html
+output preview:
+�¹�������ʿ�¹ʣ�˾���Դ�������Σ�գ�ͬʱ��ؽ�ͨ����ں�ʩ������ӵ�¡�
+--------------------------------------------------------------------------------
+[31] cluster=27 size=5 status=skip_error
+url: https://www.dailymail.co.uk/news/article-15682393/dog-groomer-attacked-rival-husband-awards-ceremony-prize.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[32] cluster=54 size=5 status=ok
+url: https://www.welt.de/regionales/sachsen/article69c61d46af187d606b81488a/verpuffung-durch-ethanol-kamin-zwei-verletzte-in-goerlitz.html
+output preview:
+�Ҵ���¯��ը�¼������������ˣ��¹ʷ����ڵ¹���������У����ý����������籨�������ɱ����͡�ÿ�����š����Դ˽����˱�����
+--------------------------------------------------------------------------------
+[33] cluster=57 size=5 status=skip_error
+url: https://www.tagesspiegel.de/potsdam/brandenburg/stichwahl-um-burgermeisteramt-nach-wahlchaos-in-strausberg-droht-neue-hangepartie-15405004.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[34] cluster=64 size=5 status=ok
+url: http://www.tz.de/stars/dschungelcamp-promis-von-denen-niemand-mehr-weiss-dass-sie-mal-dabei-waren-zr-94134498.html
+output preview:
+Dschungelcamp�����������飬�����������ٱ����ڼ�ס�������Ŀ���������ۣ�ͬʱ��ѡ������һ����ѡ�˷������ҳ�ͻ������¼������ܵ���ע��
+--------------------------------------------------------------------------------
+[35] cluster=68 size=5 status=ok
+url: https://www.n-tv.de/regionales/bayern/Letzte-Generation-Frau-wegen-Flughafen-Protest-verurteilt-id30518037.html
+output preview:
+һλŮ������뷴�Ի��������Ŀ������д��̷�����ر����ڵ¹����ý����n-tv��Zeit��Stern��Welt�ȳ��֣���ָ��ͬһ�¼���
+--------------------------------------------------------------------------------
+[36] cluster=73 size=5 status=ok
+url: https://www.dailyrecord.co.uk/all-about/homelessness
+output preview:
+Ӣ�������޼ҿɹ����⣬ĸ���ڱ���Ϊ�����������ľƵ����������������쵼���ȡ�ж���
+--------------------------------------------------------------------------------
+[37] cluster=75 size=5 status=skip_error
+url: https://www.lavozdegalicia.es/noticia/economia/2026/03/27/prejubilaron-pension-maxima-recibiran-devolucion-penalizacion/0003_202603G27P29991.htm
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[38] cluster=76 size=5 status=ok
+url: https://www.nordkurier.de/wirtschaft/gesamtumsatz-der-dax-konzerne-sinkt-das-dritte-jahr-in-folge-4464783
+output preview:
+�¹�DAXָ����ҵ���������������������½������ֹ�˾ͬʱ������Ա32,000�ˣ���ʾ���¹��������ٳ���ѹ����
+--------------------------------------------------------------------------------
+[39] cluster=79 size=5 status=ok
+url: https://economictimes.indiatimes.com/news/defence/iran-guards-say-carried-out-attacks-on-israel-and-us-forces-in-gulf/articleshow/129837289.cms
+output preview:
+�������ƶ������ʵ�Э��̸�У�ͬʱ���ʳ������е��������˻�Ϯ����������˹�������������ƶ���ɫ�к������ں����Ŀ�귢�����������ƽ���������
+--------------------------------------------------------------------------------
+done. batch_ts=1774594933
+latest summarize results saved to: temp_result.jsonl
+2026-03-27 15:06:36,737 | INFO | 脚本执行成功: llm_summarize.py | duration=263.65s
+2026-03-27 15:06:36,737 | INFO | ========== 本轮 pipeline 结束 | total_duration=288.43s ==========
+2026-03-27 15:06:36,737 | INFO | 距离下一轮启动还有 611.57 秒 | next_run_at=2026-03-27 15:16:48
+2026-03-27 15:16:48,315 | INFO | ========== 新一轮 pipeline 开始 ==========
+2026-03-27 15:16:48,315 | INFO | 开始执行脚本: gdelt_rss_ETL.py
+2026-03-27 15:16:50,575 | INFO | [gdelt_rss_ETL.py stdout]
+Batch published_at: 2026-03-27T07:16:48Z
+Rows before type filter: 5203, after: 350
+Type counts:
+ type
+Quality newspaper/magazine    282
+Tabloid newspaper              37
+Public broadcaster             18
+Commercial broadcaster         13
+Done. batch_published_at=2026-03-27T07:16:48Z
+2026-03-27 15:16:50,575 | INFO | 脚本执行成功: gdelt_rss_ETL.py | duration=2.26s
+2026-03-27 15:16:50,575 | INFO | 开始执行脚本: embedding_and_cluster.py
+2026-03-27 15:17:13,835 | INFO | [embedding_and_cluster.py stdout]
+��������: ��� 24 Сʱ
+���ڿ�ʼ(UTC): 2026-03-26T07:16:55Z
+���ڽ���(UTC): 2026-03-27T07:16:55Z
+����ԭʼ������: 2814
+��ϴ��������: 2814
+ʶ����ַ��: link
+����������������: 568
+active clusters ����: 79
+ƥ�䵽�ɴر�����: 22
+δƥ�������: 546
+
+=== ���ν�� ===
+������⵽�ɴصı�����: 22
+��ѡ�´ض��ζ���ؾɴصĴ���: 1
+unmatched д�������: 221
+�½� cluster ��: 1
+���ڶ��η������� cluster ��: 6
+cluster_size_history ������¼��: 13
+cluster.sqlite �Ѹ��¡�
+2026-03-27 15:17:13,835 | WARNING | [embedding_and_cluster.py stderr]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]
+Loading weights: 100%|��������������������| 199/199 [00:00<00:00, 8859.45it/s]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+
+Batches:   0%|          | 0/9 [00:00<?, ?it/s]
+Batches:  11%|��         | 1/9 [00:00<00:01,  4.20it/s]
+Batches:  22%|������       | 2/9 [00:00<00:01,  5.09it/s]
+Batches:  33%|��������      | 3/9 [00:00<00:01,  5.86it/s]
+Batches:  44%|����������     | 4/9 [00:00<00:00,  6.43it/s]
+Batches:  56%|������������    | 5/9 [00:00<00:00,  7.02it/s]
+Batches:  67%|��������������   | 6/9 [00:00<00:00,  7.63it/s]
+Batches:  89%|������������������ | 8/9 [00:01<00:00,  8.75it/s]
+Batches: 100%|��������������������| 9/9 [00:01<00:00,  7.61it/s]
+2026-03-27 15:17:13,835 | INFO | 脚本执行成功: embedding_and_cluster.py | duration=23.26s
+2026-03-27 15:17:13,835 | INFO | 开始执行脚本: llm_summarize.py
+2026-03-27 15:19:31,834 | INFO | [llm_summarize.py stdout]
+clusters_to_summarize=30 min_delta=3
+[1] cluster=15 size=1820 status=ok
+url: https://www.newsweek.com/parents-limit-screentime-teacher-calls-out-bigger-issue-just-as-damaging-11739947
+output preview:
+[1] cluster=15 size=1820 status=skip_error
+url: https://www.newsweek.com/parents-limit-screentime-teacher-calls-out-bigger-issue-just-as-damaging-11739947
+error: 'gbk' codec can't encode character '\U0001f30d' in position 735: illegal multibyte sequence
+--------------------------------------------------------------------------------
+[2] cluster=31 size=117 status=skip_error
+url: https://www.diariovasco.com/autor/julio-diaz-de-alda-1650.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[3] cluster=16 size=32 status=skip_error
+url: http://www.elpuntavui.cat/?task=mescriteri.mes&format=raw&criteri=subcanal&t=20260327024037&id=3376&itemidmes=1030&subsegment=7&count=6&start=8
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[4] cluster=45 size=24 status=skip_error
+url: https://www.nbclosangeles.com/tag/jeffrey-epstein/
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[5] cluster=8 size=18 status=skip_error
+url: https://timesofindia.indiatimes.com/etimes/trending/ram-navami-surya-tilak-to-be-performed-on-ram-lalla-idol-at-ayodhya-ram-mandir-timings-muhurat-visiting-slots-and-more/articleshow/129839438.cms
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[6] cluster=74 size=13 status=skip_error
+url: https://www.diariosur.es/sociedad/santoral-27-marzo-2026-que-santos-se-celebran-20260323000000-nt.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[7] cluster=1 size=11 status=skip_error
+url: https://www.sfgate.com/news/world/article/israel-launches-new-wave-of-strikes-on-iran-with-22154986.php
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[8] cluster=55 size=10 status=skip_error
+url: https://www.express.de:443/koeln/feuerdrama-in-koeln-wehr-macht-in-der-nacht-schrecklichen-fund-1253163
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[9] cluster=56 size=10 status=skip_error
+url: https://www.nzz.ch/feuilleton/christian-ulmen-und-collien-fernandes-maenner-im-bekenntniszwang-ld.1931035
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[10] cluster=84 size=10 status=skip_error
+url: https://www.diariodeibiza.es/autores/maite-alvite.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[11] cluster=83 size=9 status=ok
+url: https://www.elmundo.es/internacional/2026/03/27/69c61ee5fb7b94bd83bc04ed-directo.html
+output preview:
+�����������ж�����10,000��ʿ������ȡ�����ж��������չ�Ա��Pentagon�ƻ�������ʵʩ�����մ���������ý�����������ͻ����̬�ơ�
+--------------------------------------------------------------------------------
+[12] cluster=58 size=8 status=skip_error
+url: http://www.tz.de/verbraucher/massives-flug-chaos-an-diesen-orten-ausgerechnet-an-ostern-beliebtem-urlaubsland-droht-zr-94232388.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[13] cluster=60 size=8 status=skip_error
+url: https://www.stern.de/panorama/weltgeschehen/gestrandeter-buckelwal--meeressaeuger-ist-frei---angebliche-sichtung-vor-scharbeutz-37250004.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[14] cluster=77 size=8 status=skip_error
+url: https://www.stern.de/familie/schwarze-spuele-reinigen--so-loesen-sie-laestigen-kalk-und-schmutz-35681062.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[15] cluster=82 size=8 status=ok
+url: https://www.nordkurier.de/politik/g7-treffen-ringen-mit-rubio-um-gemeinsame-iran-linie-4464683
+output preview:
+G7�����ڻ����о�������������������ԱRubioչ��Э����Χ�ƹ�ͬ�⽻����չ�����̣�͹�Թ��ʼ������������ϵĺ�������硣
+--------------------------------------------------------------------------------
+[16] cluster=10 size=7 status=skip_error
+url: https://www.nbcdfw.com/tag/celina/
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[17] cluster=33 size=7 status=ok
+url: https://www.ilfattoquotidiano.it/2026/03/27/referendum-giustizia-no-meloni-news/8337213/
+output preview:
+�����˾���ĸ﹫Ͷ�С��񡱷���ʤ�����������θ�Ԥ˾���ͷ�������Ĺ�ע��ר�Һ�����ֹ���ζ�˾���Ŀ��ƣ�ͬʱ��Ͷ�����ʹ�������ε��½׶Ρ�
+--------------------------------------------------------------------------------
+[18] cluster=67 size=7 status=skip_error
+url: https://www.laopiniondemurcia.es/cultura/2026/03/27/son-obras-teatro-semana-region-128463829.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[19] cluster=71 size=7 status=skip_error
+url: https://timesofindia.indiatimes.com/entertainment/hindi/bollywood/box-office/url-dhurandhar-2-the-revenge-box-office-collection-day-9-live-ranveer-singh-rakesh-bedi-sanjay-dutt-arjun-rampal-r-madhavan-starrer-spy-thriller-inches-closer-to-netting-rs-700-crore-in-india-chases-rs-840-crore-lifetime-record-of-dhurandhar-1/articleshow/129839191.cms
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[20] cluster=72 size=7 status=skip_error
+url: https://kaernten.orf.at/stories/3347609/
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[21] cluster=81 size=7 status=ok
+url: https://www.bbc.com/swahili/articles/cly6ge5287lo
+output preview:
+�������ž��Ƴ�����������ƪ�����۽��������¶Կ���BBC������¶���������ʵĵ�����в�������ж�������ý����̽�����ʿ������ٵ���ȨΣ����ͬʱָ�����ʵ�ս��ѡ��������ƺ˼ƻ�����ش���в��
+--------------------------------------------------------------------------------
+[22] cluster=59 size=6 status=skip_error
+url: https://www.focus.de/kultur/stars/melissa-naschenweng-filmkuss-mit-ferdinand-seebacher-hat-ueberwindung-gekostet_f6448f39-e556-446f-923a-8047604e9f8a.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[23] cluster=61 size=6 status=skip_error
+url: https://larepublica.pe/autor/rosmery-tapara
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[24] cluster=62 size=6 status=skip_error
+url: https://www.sudouest.fr/charente-maritime/royan/royan-la-journee-des-orchestres-promet-un-festival-de-musiques-ce-samedi-28450691.php
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[25] cluster=27 size=5 status=skip_error
+url: https://www.dailymail.co.uk/news/article-15682393/dog-groomer-attacked-rival-husband-awards-ceremony-prize.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[26] cluster=57 size=5 status=ok
+url: https://www.tagesspiegel.de/potsdam/brandenburg/stichwahl-um-burgermeisteramt-nach-wahlchaos-in-strausberg-droht-neue-hangepartie-15405004.html
+output preview:
+�¹������Ǳ���˹����˹���г�ѡ�����Ʊ�������뽩�֣����������µ����ν��֣����ý�屨������һ�����
+--------------------------------------------------------------------------------
+[27] cluster=75 size=5 status=ok
+url: https://www.lavozdegalicia.es/noticia/economia/2026/03/27/prejubilaron-pension-maxima-recibiran-devolucion-penalizacion/0003_202603G27P29991.htm
+output preview:
+2024��7�����Ͻ����������������ע������Ⱥ�彫���14��֧���Ķ���������������˶����á����⣬��ǰ���ݲ���ȡ������Ͻ��߽��񷣿�������Ͻ�ˮƽ���в��׼������������ͬʱ�漰Irpef��˰������ʱ�䰲�ŵȶ෽�����ݡ�
+--------------------------------------------------------------------------------
+[28] cluster=80 size=5 status=skip_error
+url: https://www.elcorreo.com/de-tiendas/estilo-de-vida/estas-tronas-infantiles-para-comer-perfectas-porque-ocupan-poco-montan-facilmente-20260327164005-ntrc.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[29] cluster=85 size=5 status=skip_error
+url: https://www.ilgazzettino.it:443/nordest/verona/fossile_pesce_nuova_specie_scoperta_val_d_alpone_monte_postale_zaiaichthys_postalensi-7741014.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[30] cluster=86 size=5 status=skip_error
+url: https://www.elcorreo.com/de-tiendas/tecnologia/mejores-bases-brazos-regulables-para-monitor-mejoraran-postura-20260327155952-ntrc.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+done. batch_ts=1774595834
+latest summarize results saved to: temp_result.jsonl
+2026-03-27 15:19:31,835 | INFO | 脚本执行成功: llm_summarize.py | duration=138.00s
+2026-03-27 15:19:31,835 | INFO | ========== 本轮 pipeline 结束 | total_duration=163.52s ==========
+2026-03-27 15:19:31,835 | INFO | 距离下一轮启动还有 736.48 秒 | next_run_at=2026-03-27 15:31:48
+2026-03-27 15:31:48,322 | INFO | ========== 新一轮 pipeline 开始 ==========
+2026-03-27 15:31:48,322 | INFO | 开始执行脚本: gdelt_rss_ETL.py
+2026-03-27 15:31:53,340 | INFO | [gdelt_rss_ETL.py stdout]
+Batch published_at: 2026-03-27T07:31:48Z
+Rows before type filter: 5395, after: 477
+Type counts:
+ type
+Quality newspaper/magazine    350
+Tabloid newspaper              69
+Public broadcaster             32
+Commercial broadcaster         26
+Done. batch_published_at=2026-03-27T07:31:48Z
+2026-03-27 15:31:53,340 | INFO | 脚本执行成功: gdelt_rss_ETL.py | duration=5.02s
+2026-03-27 15:31:53,341 | INFO | 开始执行脚本: embedding_and_cluster.py
+2026-03-27 15:32:17,590 | INFO | [embedding_and_cluster.py stdout]
+��������: ��� 24 Сʱ
+���ڿ�ʼ(UTC): 2026-03-26T07:31:58Z
+���ڽ���(UTC): 2026-03-27T07:31:58Z
+����ԭʼ������: 3291
+��ϴ��������: 3291
+ʶ����ַ��: link
+����������������: 802
+active clusters ����: 86
+ƥ�䵽�ɴر�����: 42
+δƥ�������: 760
+
+=== ���ν�� ===
+������⵽�ɴصı�����: 42
+��ѡ�´ض��ζ���ؾɴصĴ���: 2
+unmatched д�������: 113
+�½� cluster ��: 9
+���ڶ��η������� cluster ��: 26
+cluster_size_history ������¼��: 27
+cluster.sqlite �Ѹ��¡�
+2026-03-27 15:32:17,591 | WARNING | [embedding_and_cluster.py stderr]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]
+Loading weights: 100%|��������������������| 199/199 [00:00<00:00, 8870.84it/s]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+
+Batches:   0%|          | 0/13 [00:00<?, ?it/s]
+Batches:   8%|��         | 1/13 [00:00<00:02,  4.17it/s]
+Batches:  15%|����        | 2/13 [00:00<00:02,  5.18it/s]
+Batches:  23%|������       | 3/13 [00:00<00:01,  5.90it/s]
+Batches:  31%|������       | 4/13 [00:00<00:01,  6.48it/s]
+Batches:  38%|��������      | 5/13 [00:00<00:01,  7.00it/s]
+Batches:  46%|����������     | 6/13 [00:00<00:00,  7.37it/s]
+Batches:  54%|������������    | 7/13 [00:01<00:00,  7.91it/s]
+Batches:  69%|��������������   | 9/13 [00:01<00:00,  8.89it/s]
+Batches:  77%|����������������  | 10/13 [00:01<00:00,  9.14it/s]
+Batches:  92%|��������������������| 12/13 [00:01<00:00,  9.14it/s]
+Batches: 100%|��������������������| 13/13 [00:01<00:00,  8.09it/s]
+2026-03-27 15:32:17,591 | INFO | 脚本执行成功: embedding_and_cluster.py | duration=24.25s
+2026-03-27 15:32:17,591 | INFO | 开始执行脚本: llm_summarize.py
+2026-03-27 15:36:54,795 | INFO | [llm_summarize.py stdout]
+clusters_to_summarize=61 min_delta=3
+[1] cluster=31 size=106 status=skip_error
+url: https://www.elcomercio.es/autor/jose-a-gonzalez-4817.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[2] cluster=16 size=32 status=skip_error
+url: http://www.elpuntavui.cat/?task=mescriteri.mes&format=raw&criteri=subcanal&t=20260327024037&id=3376&itemidmes=1030&subsegment=7&count=6&start=8
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[3] cluster=30 size=24 status=ok
+url: http://www.fnp.de/welt/buckelwal-befreit-sich-in-der-nacht-von-ostsee-sandbank-zr-94237891.html
+output preview:
+�ڱ�����ɳ���ϸ�ǳ���ձ���������ҹ��������������ر�����ʾ�þ����ѳɹ�����Ҳ��ٿɼ�����ƪ����ָ������һ�¼�������ʯ���ݸ������򣬵��ؾ���;�Ԯ��Ա��֤����һ���̡�
+--------------------------------------------------------------------------------
+[4] cluster=45 size=24 status=skip_error
+url: https://www.nbclosangeles.com/tag/jeffrey-epstein/
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[5] cluster=14 size=22 status=ok
+url: https://www.lavanguardia.com/internacional/20260327/11500497/trump-firmara-dolares-estadounidenses-inedito-presidente-ejercicio.html
+output preview:
+�����������ƻ��������յ�ǩ��ӡ���µ�ֽ���ϣ�������1861�������״���������ͳ��ǩ����������Ԫֽ���ϡ����ý�屨���ƣ���һ�ٴ�ּ��ͨ������չʾ�����յĳɾͣ����ܴ�����������ƣ�����ط����Ա��ƽ������ֱ����ᵽ�üƻ���������������250���������ء�
+--------------------------------------------------------------------------------
+[6] cluster=8 size=18 status=skip_error
+url: https://timesofindia.indiatimes.com/etimes/trending/ram-navami-surya-tilak-to-be-performed-on-ram-lalla-idol-at-ayodhya-ram-mandir-timings-muhurat-visiting-slots-and-more/articleshow/129839438.cms
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[7] cluster=50 size=13 status=ok
+url: https://www.welt.de/regionales/mecklenburg-vorpommern/article69c624128f57616717160f4a/wechselhaftes-wetter-im-norden-oertlich-frost-und-regen.html
+output preview:
+���µ�������������䣬�ֲ�����˪���ͽ��꣬�紺�����쳣�������������������ȶ�����״����ͬʱ���±������¶���ͨ�¹ʣ��������ڹ�ע��
+--------------------------------------------------------------------------------
+[8] cluster=74 size=13 status=skip_error
+url: https://www.diariosur.es/sociedad/santoral-27-marzo-2026-que-santos-se-celebran-20260323000000-nt.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[9] cluster=1 size=11 status=skip_error
+url: https://www.sfgate.com/news/world/article/israel-launches-new-wave-of-strikes-on-iran-with-22154986.php
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[10] cluster=10 size=11 status=skip_error
+url: https://www.nbcdfw.com/tag/jeffrey-epstein/
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[11] cluster=60 size=11 status=skip_error
+url: http://www.tz.de/welt/meeres-gigant-wal-drama-in-der-ostsee-erneuter-rettungsversuch-von-gestrandetem-zr-94233745.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[12] cluster=92 size=11 status=skip_error
+url: https://finanza.lastampa.it/Titolo/Quotazioni/a2a-green-bond-tf-4-375percento-fb34-call-eur/xs2583205906/XS2583205906/MDJ8VDI=
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[13] cluster=103 size=11 status=skip_error
+url: https://www.laverdad.es/autor/alicia-negre-539.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[14] cluster=104 size=11 status=ok
+url: https://www.bild.de/politik/inland/brisante-umfrage-fast-jeder-zweite-glaubt-regierung-platzt-vorzeitig-69c3cff58f5761671715eef5
+output preview:
+�¹�������˰�ոĸ�;������������㷺���飬���ڶԲ�����ʩ�е���������������ָ�����߼Ӿ��в��׼�������ͬʱ�����β�����ֶ������ȶ��Ե����ɣ���������漰δ��ִ�������ٵ���ս��Ǳ��Σ����
+--------------------------------------------------------------------------------
+[15] cluster=112 size=11 status=skip_error
+url: https://www.hna.de/leben/wohnen/richtig-lueften-im-fruehling-dieser-zeitpunkt-spart-heizkosten-zr-94237919.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[16] cluster=55 size=10 status=skip_error
+url: https://www.express.de:443/koeln/feuerdrama-in-koeln-wehr-macht-in-der-nacht-schrecklichen-fund-1253163
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[17] cluster=56 size=10 status=skip_error
+url: https://www.nzz.ch/feuilleton/christian-ulmen-und-collien-fernandes-maenner-im-bekenntniszwang-ld.1931035
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[18] cluster=84 size=10 status=ok
+url: https://www.diariodeibiza.es/autores/maite-alvite.html
+output preview:
+[18] cluster=84 size=10 status=skip_error
+url: https://www.diariodeibiza.es/autores/maite-alvite.html
+error: 'gbk' codec can't encode character '\xc1' in position 42: illegal multibyte sequence
+--------------------------------------------------------------------------------
+[19] cluster=95 size=10 status=ok
+url: https://www.newsweek.com/additional-10000-us-ground-troops-could-be-sent-to-middle-east-report-11744460
+output preview:
+�������������ж���������10,000�����沿�ӣ�����̹�˺Ͳ�������Ӧ�Ե�����ͻ�������������ƻ��ӳ������ʵ����ͨ뺣������ܲ�ȡ��һ�������ж������ý�屨���ƣ���������������������ز��𷽰������Ƴ������š�
+--------------------------------------------------------------------------------
+[20] cluster=58 size=9 status=ok
+url: https://www1.wdr.de/nachrichten/osterferien-reiselust-unveraendert-hoch-100.html
+output preview:
+����ڼ����ڼ䣬�������ٺ�����ң���������ѡ��������У�ͬʱ�������ε������ˮ�ֺ����¾���Ʋ�����
+--------------------------------------------------------------------------------
+[21] cluster=107 size=9 status=ok
+url: https://www.laverdad.es/de-tiendas/ofertas/quedes-suministro-chollos-semanales-nuevo-top-previo-20260327101803-ntrc.html
+output preview:
+���������ý�巢��Semana Santa������ڼ��ڣ�ǰ��ÿ���Ż�Ԥ����ͬʱ��������Semana Santa����ż���ά���Ǿưɵ���Ӫָ�ϣ������ڽ����С����ճ̰��š�������ʾ�����ݡ�
+--------------------------------------------------------------------------------
+[22] cluster=62 size=8 status=skip_error
+url: https://www.zeit.de/news/2026-03/27/musik-als-schule-fuers-leben-landesgymnasium-mit-jubilaeum
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[23] cluster=77 size=8 status=ok
+url: https://www.stern.de/familie/schwarze-spuele-reinigen--so-loesen-sie-laestigen-kalk-und-schmutz-35681062.html
+output preview:
+��ƪ�����ṩ�˹��ڼ�ͥ����ʵ�ü��ɣ�����������ˮ�ۡ�����ը���ͳ����̻����Լ�����ں���������ȷ����������
+--------------------------------------------------------------------------------
+[24] cluster=115 size=8 status=ok
+url: https://www.abc.es/sevilla/economia/steve-cadigan-20260327072302-nts.html
+output preview:
+��ƪ����̽�����ִ��쵼���ĺ������⣬������γ�Խ��ͳȨ��ģʽ��ǿ������ʽ�쵼�����ε�������Ч��ͨ���˷�ƫ�����Դٽ��Ŷӷ�չ�;����Ż���
+--------------------------------------------------------------------------------
+[25] cluster=67 size=7 status=ok
+url: https://www.laopiniondemurcia.es/cultura/2026/03/27/son-obras-teatro-semana-region-128463829.html
+output preview:
+����Ϸ���յ��죬�������¶����ǵ�����Ϸ��������ע�����ضಿ��Ŀ�����ݣ�ͬʱ�۽�Ļ�����������ͨ�����˼�;�տ���գ�Ϊ��̨���ݸ�����������
+--------------------------------------------------------------------------------
+[26] cluster=71 size=7 status=skip_error
+url: https://timesofindia.indiatimes.com/entertainment/hindi/bollywood/box-office/url-dhurandhar-2-the-revenge-box-office-collection-day-9-live-ranveer-singh-rakesh-bedi-sanjay-dutt-arjun-rampal-r-madhavan-starrer-spy-thriller-inches-closer-to-netting-rs-700-crore-in-india-chases-rs-840-crore-lifetime-record-of-dhurandhar-1/articleshow/129839191.cms
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[27] cluster=72 size=7 status=skip_error
+url: https://kaernten.orf.at/stories/3347609/
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[28] cluster=91 size=7 status=ok
+url: https://www.welt.de/regionales/hessen/article69c6226fbcbf6a73533c10eb/5-8-prozent-mehr-geld-in-zwei-stufen-fuer-landesbeschaeftigte.html
+output preview:
+��ɭ��ʵʩ����ͳһ��������6���˻�ü�н�������ݹ�Ա�����׶���н5.8%��
+--------------------------------------------------------------------------------
+[29] cluster=96 size=7 status=ok
+url: http://www.hna.de/politik/zusaetzliche-10-000-us-bodentruppen-koennten-in-den-nahen-osten-entsandt-werden-bericht-zr-94237894.html
+output preview:
+����������Ϊ���ܵ�����ս���ﱸ���������������ս���������½ս�Ӻ�̹�˲��ӣ���������Ա������Ϊ��ʷ�����޴���ս�������ݶ�ƪ�����������������ж��������ⲿ��1�������沿�ӡ�
+--------------------------------------------------------------------------------
+[30] cluster=110 size=7 status=skip_error
+url: https://www.lexpress.fr/monde/europe/prix-de-lessence-de-lallemagne-a-litalie-comment-ils-tentent-de-limiter-la-hausse-JV7B4RUZUJAQBCXJE3EYGDSYU4/
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[31] cluster=116 size=7 status=skip_error
+url: https://www.nw.de/nachrichten/panorama/24299962_Ein-Jahr-danach-Myanmar-ringt-weiter-mit-Folgen-des-Bebens.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[32] cluster=118 size=7 status=skip_error
+url: https://www.shz.de/deutschland-welt/schleswig-holstein/umfrage-des-tages/artikel/sollte-man-den-gestrandeten-wal-retten-oder-sterben-lassen-50393869
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[33] cluster=59 size=6 status=skip_error
+url: https://www.focus.de/kultur/stars/melissa-naschenweng-filmkuss-mit-ferdinand-seebacher-hat-ueberwindung-gekostet_f6448f39-e556-446f-923a-8047604e9f8a.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[34] cluster=61 size=6 status=skip_error
+url: https://larepublica.pe/autor/rosmery-tapara
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[35] cluster=80 size=6 status=skip_error
+url: https://www.laverdad.es/de-tiendas/estilo-de-vida/estas-tronas-infantiles-para-comer-perfectas-porque-ocupan-poco-montan-facilmente-20260327164005-ntrc.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[36] cluster=86 size=6 status=skip_error
+url: https://www.laverdad.es/de-tiendas/tecnologia/mejores-bases-brazos-regulables-para-monitor-mejoraran-postura-20260327155952-ntrc.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[37] cluster=87 size=6 status=skip_error
+url: https://www.express.de:443/promi-und-show/diese-esc-gewinner-blieben-keine-one-hit-wonder-1253203
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[38] cluster=90 size=6 status=ok
+url: http://www.tz.de/wirtschaft/etikettenschwindel-bei-autofoerderung-gruene-fordern-anpassung-die-auch-geringverdienern-etwas-bringt-zr-94237927.html
+output preview:
+�¹��̵��������Ƶ綯��������ǿ����ǰ���߸���ݼ��߶˳����籣ʱ�ݺ����ͺգ����ŵ������������Ը���ƽ�ػݼ�������Ⱥ�塣
+--------------------------------------------------------------------------------
+[39] cluster=93 size=6 status=ok
+url: https://www.bostonglobe.com/2026/03/27/arts/what-to-stream-this-weekend/
+output preview:
+�¹�һλ���ӽ�Ŀ����������������봫�����ﲢ�磬�����������ŵر�ʾ���Ҽ�ֱҪ���ˡ�����ƪ�������۽�������ͻ����������ҵ��λ�仯����������
+--------------------------------------------------------------------------------
+[40] cluster=99 size=6 status=skip_error
+url: https://www.laopiniondemurcia.es/autores/gabriel-santamarina.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[41] cluster=101 size=6 status=skip_error
+url: https://www.ksta.de:443/region/rhein-sieg-bonn/niederkassel/nach-dem-grossbrand-in-rheidt-mutter-aus-niederkassel-und-ihre-zwei-kinder-haben-alles-verloren-1252840
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[42] cluster=106 size=6 status=ok
+url: https://www.larazon.es/castilla-y-leon/cinco-pueblos-mas-bonitos-espana-semana-santa-entusiasta-llena_2026032769c51cf483aca52e0e3a03a7.html
+output preview:
+AEMET������ʥ���ڼ������Ԥ������ʾ�����������������¬�����޽��꣬��˹������-�����������½ϵ��ҽ���ϡ�٣��������ǵ��������𲽸��ƣ�������Ⱥ����û���Ԥ����
+--------------------------------------------------------------------------------
+[43] cluster=119 size=6 status=ok
+url: http://www.tz.de/stars/ein-flipper-wird-80-mit-diesem-titel-feierte-olaf-malolepski-seinen-ersten-erfolg-zr-94237872.html
+output preview:
+Olaf Malolepski�ԡ�Flipper��֮��ӭ��80���꣬��ף���׸��ɹ���
+--------------------------------------------------------------------------------
+[44] cluster=27 size=5 status=skip_error
+url: https://www.dailymail.co.uk/news/article-15682393/dog-groomer-attacked-rival-husband-awards-ceremony-prize.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[45] cluster=85 size=5 status=skip_error
+url: https://www.ilgazzettino.it:443/nordest/verona/fossile_pesce_nuova_specie_scoperta_val_d_alpone_monte_postale_zaiaichthys_postalensi-7741014.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[46] cluster=88 size=5 status=ok
+url: https://www.hna.de/welt/bedenklich-forscher-erklaert-wie-schreibassistenten-unsere-meinung-unbemerkt-veraendern-zr-94237899.html
+output preview:
+��ƪ����̽������д������������û�δ����������Ӱ����۵��γɣ��о�ָ�����༼������ͨ�� subtle �ķ�ʽ������ı����ǵĿ�����
+--------------------------------------------------------------------------------
+[47] cluster=89 size=5 status=skip_error
+url: http://www.hna.de/leben/einfach-tasty/ein-nostalgischer-genuss-eierragout-nach-omas-rezept-zr-94234463.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[48] cluster=94 size=5 status=skip_error
+url: https://www.hna.de/leute/historischer-schmuck-als-beute-wenn-vor-huebscher-kulisse-geraubt-und-gemordet-wird-zr-94237931.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[49] cluster=97 size=5 status=ok
+url: http://www.fnp.de/politik/trump-verlaengert-ultimatum-fuer-iran-zum-zweiten-mal-zr-94237835.html
+output preview:
+�������ٴ��ӳ������ʵ����ͨ뺣������ж����ƽ��ţ����ý�����׷����һ�⽻�ж���
+--------------------------------------------------------------------------------
+[50] cluster=98 size=5 status=skip_error
+url: https://www.larazon.es/autores/rodrigo-criado/
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[51] cluster=100 size=5 status=ok
+url: https://www.diariodeibiza.es/opinion/2026/03/27/guiri-sangre-virgende-vivienda-128461841.html
+output preview:
+��������ʥ�ܻ��ס�������Ϊ���ڹ�ע���㣬����ý�屨�����ڽ���ʽ��ϸ�ڣ���װ�Ρ���ʽ���̼���ͳ��Ʒ��ͬʱ̽���˵���ס����չ�ı�Ҫ·��ͼ����ӳ��������������Ĺ�ע��ط���������ս��
+--------------------------------------------------------------------------------
+[52] cluster=102 size=5 status=skip_error
+url: http://www.merkur.de/lokales/region-holzkirchen/warngau-ort66932/emotionale-wochen-so-bereitet-sich-andreas-beilhack-aufs-buergermeisteramt-vor-94237660.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[53] cluster=105 size=5 status=skip_error
+url: https://www.zeit.de/politik/2026-03/kuba-us-blockade-regimewechsel-bert-hoffmann-giga-institut
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[54] cluster=108 size=5 status=skip_error
+url: https://www.ksta.de:443/region/leverkusen/stadt-leverkusen/leverkusen-nur-noch-wenige-mieter-fehlen-fuer-den-ex-kaufhof-1252814
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[55] cluster=109 size=5 status=skip_error
+url: https://www.laopiniondemurcia.es/semana-santa/cartagena/2026/03/27/iman-pasion-128433940.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[56] cluster=111 size=5 status=skip_error
+url: https://www.ksta.de:443/region/rhein-erft/erftstadt/erftstadt-sex-szene-trifft-sich-weiter-auf-umgebautem-a553-rastplatz-1252879
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[57] cluster=113 size=5 status=ok
+url: https://www.lemonde.fr/international/article/2026/03/27/affaiblie-par-son-echec-au-referendum-meloni-tente-de-faire-place-nette-dans-un-gouvernement-cerne-par-les-affaires_6674479_3210.html
+output preview:
+���������÷���������������ڲ��Ķ�����˾������ɣ̹�������Ӹ��ܱ��������ְ������÷�����ύ�ǳʣ����Լ������¼�¼��ס�����÷������ͼͨ�����µ����ȶ����棬��ɣ̹�����ְ�������飬������ԱҪ���������Ա���е��顣���ͬʱ���ڸ��ڲ���������·�ߵ�ͶƱҲ�Ӿ������β�ȷ���ԡ�
+--------------------------------------------------------------------------------
+[58] cluster=114 size=5 status=skip_error
+url: https://www.hna.de/niedersachsen/niedersachsen-flughafen-hannover-vor-oster-ansturm-auswaertiges-amt-warnt-94235894.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[59] cluster=117 size=5 status=skip_error
+url: https://www.diariovasco.com/suplementos/gela/hernani-lanbide-heziketa-apuesta-calidad-innovacion-empleabilidad-20260323090521-nt.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[60] cluster=120 size=5 status=ok
+url: https://www.telemundo.com/noticias/noticias-telemundo/estados-unidos/una-jueza-impide-que-la-administracion-trump-restrinja-los-contratos-d-rcna265420
+output preview:
+����һλ����ٲö���ʱ��ͣ�������������˹����ܹ�˾Anthropicʵʩ���Ʋô�ʩ����һ������ֹ���������������������������ļƻ�����־�Ÿù�˾��Ӧ����������������ս��ȡ����Ҫ��չ��
+--------------------------------------------------------------------------------
+[61] cluster=121 size=5 status=ok
+url: https://www.zeit.de/news/2026-03/27/wegner-weiter-offen-fuer-weiterbau-von-u7
+output preview:
+CDU�����ں����ƶ���װAI����ͷ������������ͨ��ȫ���������ؽ�ͨ�������ۡ�
+--------------------------------------------------------------------------------
+done. batch_ts=1774596738
+latest summarize results saved to: temp_result.jsonl
+2026-03-27 15:36:54,797 | INFO | 脚本执行成功: llm_summarize.py | duration=277.20s
+2026-03-27 15:36:54,797 | INFO | ========== 本轮 pipeline 结束 | total_duration=306.47s ==========
+2026-03-27 15:36:54,797 | INFO | 距离下一轮启动还有 593.53 秒 | next_run_at=2026-03-27 15:46:48
+2026-03-27 15:46:49,251 | INFO | pipeline runner 已启动
+2026-03-27 15:46:49,251 | INFO | BASE_DIR=C:\code\news\ai-curated-news\backend
+2026-03-27 15:46:49,251 | INFO | RUN_INTERVAL_SECONDS=900
+2026-03-27 15:46:49,252 | INFO | SCRIPT_TIMEOUT_SECONDS=840
+2026-03-27 15:46:49,252 | INFO | ========== 新一轮 pipeline 开始 ==========
+2026-03-27 15:46:49,252 | INFO | 开始执行脚本: gdelt_rss_ETL.py
+2026-03-27 15:46:51,417 | INFO | [gdelt_rss_ETL.py stdout]
+Removed 1 domain codes due to duplicated (title, domain) rows > 3.
+Blacklisted domains: lastampa.it
+Deleted 13 historical rows from blacklisted domains.
+Batch published_at: 2026-03-27T07:46:49Z
+Rows before type filter: 5616, after: 385
+Type counts:
+ type
+Quality newspaper/magazine    304
+Tabloid newspaper              44
+Commercial broadcaster         24
+Public broadcaster             13
+Done. batch_published_at=2026-03-27T07:46:49Z
+2026-03-27 15:46:51,417 | INFO | 脚本执行成功: gdelt_rss_ETL.py | duration=2.17s
+2026-03-27 15:46:51,417 | INFO | 开始执行脚本: embedding_and_cluster.py
+2026-03-27 15:47:08,452 | INFO | [embedding_and_cluster.py stdout]
+��������: ��� 24 Сʱ
+���ڿ�ʼ(UTC): 2026-03-26T07:46:56Z
+���ڽ���(UTC): 2026-03-27T07:46:56Z
+����ԭʼ������: 3663
+��ϴ��������: 3663
+ʶ����ַ��: link
+����������������: 1029
+active clusters ����: 121
+ƥ�䵽�ɴر�����: 51
+δƥ�������: 978
+
+=== ���ν�� ===
+������⵽�ɴصı�����: 51
+��ѡ�´ض��ζ���ؾɴصĴ���: 2
+unmatched д�������: 160
+�½� cluster ��: 8
+���ڶ��η������� cluster ��: 1
+cluster_size_history ������¼��: 30
+cluster.sqlite �Ѹ��¡�
+2026-03-27 15:47:08,452 | WARNING | [embedding_and_cluster.py stderr]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]
+Loading weights: 100%|��������������������| 199/199 [00:00<00:00, 8475.66it/s]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+
+Batches:   0%|          | 0/17 [00:00<?, ?it/s]
+Batches:   6%|��         | 1/17 [00:00<00:04,  3.98it/s]
+Batches:  12%|����        | 2/17 [00:00<00:03,  4.86it/s]
+Batches:  18%|����        | 3/17 [00:00<00:02,  5.45it/s]
+Batches:  24%|������       | 4/17 [00:00<00:02,  6.02it/s]
+Batches:  29%|������       | 5/17 [00:00<00:01,  6.54it/s]
+Batches:  35%|��������      | 6/17 [00:00<00:01,  7.01it/s]
+Batches:  41%|��������      | 7/17 [00:01<00:01,  7.37it/s]
+Batches:  47%|����������     | 8/17 [00:01<00:01,  7.46it/s]
+Batches:  53%|������������    | 9/17 [00:01<00:01,  7.88it/s]
+Batches:  65%|��������������   | 11/17 [00:01<00:00,  8.78it/s]
+Batches:  71%|��������������   | 12/17 [00:01<00:00,  9.03it/s]
+Batches:  82%|������������������ | 14/17 [00:01<00:00,  9.54it/s]
+Batches:  88%|������������������ | 15/17 [00:01<00:00,  9.10it/s]
+Batches:  94%|��������������������| 16/17 [00:02<00:00,  8.92it/s]
+Batches: 100%|��������������������| 17/17 [00:02<00:00,  8.14it/s]
+2026-03-27 15:47:08,452 | INFO | 脚本执行成功: embedding_and_cluster.py | duration=17.04s
+2026-03-27 15:47:08,452 | INFO | 开始执行脚本: llm_summarize.py
+2026-03-27 15:51:14,480 | INFO | [llm_summarize.py stdout]
+clusters_to_summarize=47 min_delta=3
+[1] cluster=31 size=177 status=ok
+url: https://www.larazon.es/economia/viajes-balnearios-imserso-2026-plazas-abiertas-requisitos-plazos-como-apuntarse_2026032769c5ad3a83aca52e0e3aa511.html
+output preview:
+������������˹�����ǵ������ܱߵ��������Ŷ�̬��2026��3��27�����ҵ��ȵ��¼�������**ʥ�ܣ�Semana Santa���ڽ̻**��**��ͨ������ʩ����**�����������  
+
+1. **ʥ�ܻ������**  
+   - ����ʡ��**Valladolid**�Ƴ�ʥ��ʮ�ص㣬��ϸ�滮�ڽ�����·�����ص���  
+   - ����**costaleros�����л�������ȱ**����������ʡ������ͳ���б�����ͣ��  
+   - ����������**Fevesa��֯**�����ͷ���ᣬ������������ֱ��������ǵ���·�ߣ�׷��2009�����ƻ��Ӱ������  
+
+2. **��ͨ������ʩ����**  
+   - �����������񼰹�������**ǿ��Ҫ��**������������·��˾��Renfe��ά����������-�������ǵ�ֱͨ�г�����  
+   - �������������������������뵱����ҵ������ʩѹRenfe�ƽ���·�ߵĿ�ͨ��  
+
+3. **�Ļ�����ʷ����**  
+   - ������������**Ser��fica�޵�Ժ�������**Ϊ�������ٰ��ڽ���ʽ���Ļ�������Եط���ʷ���̡�  
+
+���ϣ����ž۽��ڴ�ͳ�ڽ̻���������ط��Ļ����м�������ʩ���Ƶ��������󣬷�ӳ���������������Ļ���ͬ�뽻ͨ������˫�����ӡ�
+--------------------------------------------------------------------------------
+[2] cluster=103 size=35 status=skip_error
+url: https://www.elnortedecastilla.es/autor/jose-anselmo-moreno-7494.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[3] cluster=127 size=35 status=skip_error
+url: https://www.abc.net.au/
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[4] cluster=16 size=32 status=skip_error
+url: http://www.elpuntavui.cat/?task=mescriteri.mes&format=raw&criteri=subcanal&t=20260327024037&id=3376&itemidmes=1030&subsegment=7&count=6&start=8
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[5] cluster=45 size=24 status=skip_error
+url: https://www.nbclosangeles.com/tag/jeffrey-epstein/
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[6] cluster=8 size=18 status=skip_error
+url: https://timesofindia.indiatimes.com/etimes/trending/ram-navami-surya-tilak-to-be-performed-on-ram-lalla-idol-at-ayodhya-ram-mandir-timings-muhurat-visiting-slots-and-more/articleshow/129839438.cms
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[7] cluster=74 size=14 status=ok
+url: https://www.elnortedecastilla.es/sociedad/santoral-hoy-santos-celebran-hoy-viernes-marzo-20260327123232-nt.html
+output preview:
+2026��3��27�գ������壩��ʥ����ף���Ϊ���㣬���������ý���硶El Norte de Castilla����Diario Sur����ABC���Ⱦ��ṩ����ʥ��������ѯ����ͬʱ�����������Burela��Huelva��ʼ��ףSemana Santa��������ܣ�����ػ�ʹ�ͳϰ���ܵ���ע��
+--------------------------------------------------------------------------------
+[8] cluster=1 size=11 status=skip_error
+url: https://www.sfgate.com/news/world/article/israel-launches-new-wave-of-strikes-on-iran-with-22154986.php
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[9] cluster=10 size=11 status=skip_error
+url: https://www.nbcdfw.com/tag/jeffrey-epstein/
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[10] cluster=60 size=11 status=skip_error
+url: http://www.tz.de/welt/meeres-gigant-wal-drama-in-der-ostsee-erneuter-rettungsversuch-von-gestrandetem-zr-94233745.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[11] cluster=92 size=11 status=ok
+url: https://finanza.lastampa.it/Titolo/Quotazioni/a2a-green-bond-tf-4-375percento-fb34-call-eur/xs2583205906/XS2583205906/MDJ8VDI=
+output preview:
+����������г����ھ۽�����ɫծȯ��BTP�Ľ��׶�̬����ؽ��ڲ�Ʒ����Ƶ�����£���ӳ�г��Բ�ͬ���޺����ʵĽ��׻��
+--------------------------------------------------------------------------------
+[12] cluster=112 size=11 status=skip_error
+url: https://www.hna.de/leben/wohnen/richtig-lueften-im-fruehling-dieser-zeitpunkt-spart-heizkosten-zr-94237919.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[13] cluster=55 size=10 status=skip_error
+url: https://www.express.de:443/koeln/feuerdrama-in-koeln-wehr-macht-in-der-nacht-schrecklichen-fund-1253163
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[14] cluster=56 size=10 status=ok
+url: https://www.nzz.ch/feuilleton/christian-ulmen-und-collien-fernandes-maenner-im-bekenntniszwang-ld.1931035
+output preview:
+�������������ɵ�ʥ�ܻ�еġ�Cofrad��a del Prendimiento���ֵܻ�����˴�ͳ��ʽ�������ڶ���ͽ���롣
+--------------------------------------------------------------------------------
+[15] cluster=62 size=9 status=ok
+url: https://www.stern.de/gesellschaft/regional/sachsen/musikausbildung--musik-als-schule-fuers-leben---landesgymnasium-mit-jubilaeum-37260140.html
+output preview:
+������ѧУΪ�������60����ٰ����������ר�����ֻἰ�����ɹ�չʾ��ͻ�����ֽ����Ը��˳ɳ�����ԶӰ�졣
+--------------------------------------------------------------------------------
+[16] cluster=80 size=9 status=ok
+url: https://www.elnortedecastilla.es/de-tiendas/estilo-de-vida/estas-tronas-infantiles-para-comer-perfectas-porque-ocupan-poco-montan-facilmente-20260327164005-ntrc.html
+output preview:
+���������ý�屨����һ��Ӥ��������ռ�ÿռ�С�����ڰ�װ���ܵ��ҳ���ӭ����ز�Ʒ�ڶ��������ĸӤ��Ʒ��������ۡ�
+--------------------------------------------------------------------------------
+[17] cluster=86 size=9 status=ok
+url: https://www.elnortedecastilla.es/de-tiendas/tecnologia/mejores-bases-brazos-regulables-para-monitor-mejoraran-postura-20260327155952-ntrc.html
+output preview:
+���������ý�巢�����£��Ƽ������ʾ��֧����ɵ��ڱ۲�Ʒ��ǿ�����ڸ����ճ�ʹ�����ơ������칫���ʶȷ���Ļ������á�
+--------------------------------------------------------------------------------
+[18] cluster=116 size=8 status=skip_error
+url: https://www.abendzeitung-muenchen.de/panorama/ein-jahr-danach-myanmar-ringt-weiter-mit-folgen-des-bebens-art-1121570
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[19] cluster=130 size=8 status=ok
+url: https://www.bbc.co.uk/news/articles/c78n6p09pzno
+output preview:
+��ǰ����ս���Ĺؼ��������ڻ���ľ�Ⱥ�Ͽ���ú�Ͽ��Ϊȫ����Ҫ����ͨ��������ͨ��ˮ�ס������ͺ����������ڴ�ռ���Ϸ磬ͬʱ���Ƴ��ֻ��ͼ�������������������ͨ����͹������ս��Ҫ���Ŀ�������
+--------------------------------------------------------------------------------
+[20] cluster=71 size=7 status=skip_error
+url: https://timesofindia.indiatimes.com/entertainment/hindi/bollywood/box-office/url-dhurandhar-2-the-revenge-box-office-collection-day-9-live-ranveer-singh-rakesh-bedi-sanjay-dutt-arjun-rampal-r-madhavan-starrer-spy-thriller-inches-closer-to-netting-rs-700-crore-in-india-chases-rs-840-crore-lifetime-record-of-dhurandhar-1/articleshow/129839191.cms
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[21] cluster=72 size=7 status=ok
+url: https://kaernten.orf.at/stories/3347609/
+output preview:
+���ڷ�����������۳������ң�����������ʿָ�������Ĺ滮�Է���������Ŀ���ƽ������谭��ͬʱ��������ڹ����������㷺���顣
+--------------------------------------------------------------------------------
+[22] cluster=99 size=7 status=skip_error
+url: https://www.diariodemallorca.es/autores/gabriel-santamarina.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[23] cluster=110 size=7 status=skip_error
+url: https://www.lexpress.fr/monde/europe/prix-de-lessence-de-lallemagne-a-litalie-comment-ils-tentent-de-limiter-la-hausse-JV7B4RUZUJAQBCXJE3EYGDSYU4/
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[24] cluster=118 size=7 status=skip_error
+url: https://www.shz.de/deutschland-welt/schleswig-holstein/umfrage-des-tages/artikel/sollte-man-den-gestrandeten-wal-retten-oder-sterben-lassen-50393869
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[25] cluster=123 size=7 status=ok
+url: https://timesofindia.indiatimes.com/auto/cars/affordable-diesel-automatic-suvs-under-rs-15-lakh-kia-seltos-nexon-more/articleshow/129832850.cms
+output preview:
+DAZN�Ƴ���ʱ���ļƻ����û�����9.99ŷԪ��������ר������������ݷ��񣬸û�������������ý��ƽ̨ͬ���ƹ㡣
+--------------------------------------------------------------------------------
+[26] cluster=124 size=7 status=ok
+url: https://www.independent.co.uk/news/uk/home-news/waitrose-cheaper-shoppers-tesco-sainsburys-study-b2946377.html
+output preview:
+Tesco��Sainsbury's���о���ʾ�ڲ�����Ʒ�Ͽ��ܱ�Waitrose����ͬʱҲ�б���ָ��ĳЩ������Ʒ�Ʋ�Ʒ�۸���λ��ǰ�С�
+--------------------------------------------------------------------------------
+[27] cluster=125 size=7 status=ok
+url: https://auto.economictimes.indiatimes.com/news/oil-and-lubes/govt-cuts-petrol-diesel-excise-duty-by-10-but-no-relief-for-consumers-heres-why/129841081
+output preview:
+ӡ����������ȼ��˰��������δ���棬������Աָ�����߽������²��档�����ͼ۵���ǣ���г���ע�����ֹ��������������ձ����Ƴ�ȼ���ۿۻ�۸�ܿش�ʩ�������������Ծ۽���˰�ѵ������ն˼۸��ʵ��Ӱ�졣
+--------------------------------------------------------------------------------
+[28] cluster=59 size=6 status=skip_error
+url: https://www.focus.de/kultur/stars/melissa-naschenweng-filmkuss-mit-ferdinand-seebacher-hat-ueberwindung-gekostet_f6448f39-e556-446f-923a-8047604e9f8a.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[29] cluster=61 size=6 status=ok
+url: https://larepublica.pe/autor/rosmery-tapara
+output preview:
+La Rep��blica������Rosmery Tapara��ר�����¼�������ݡ�
+--------------------------------------------------------------------------------
+[30] cluster=87 size=6 status=ok
+url: https://www.express.de:443/promi-und-show/diese-esc-gewinner-blieben-keine-one-hit-wonder-1253203
+output preview:
+ŷ�޸質������ESC���Ķ�λ�ھ�ѡ�ֲ��ǽ�ƾһ�׸�����óɹ������Ǻ����������������ȡ�üѼ���֤����������Ӱ�������г��Ͽɶȡ�
+--------------------------------------------------------------------------------
+[31] cluster=94 size=6 status=skip_error
+url: https://www.stern.de/historischer-schmuck-als-beute--wenn-vor-huebscher-kulisse-geraubt-und-gemordet-wird-37260070.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[32] cluster=101 size=6 status=ok
+url: https://www.ksta.de:443/region/rhein-sieg-bonn/niederkassel/nach-dem-grossbrand-in-rheidt-mutter-aus-niederkassel-und-ihre-zwei-kinder-haben-alles-verloren-1252840
+output preview:
+һ��25���Ů��Noelia��������ȥ�����¼��������������ҵ����ۡ�
+--------------------------------------------------------------------------------
+[33] cluster=114 size=6 status=ok
+url: https://www.hna.de/hessen/warnt-urlauber-flughafen-frankfurt-vor-oster-ansturm-auswaertiges-amt-zr-94235832.html
+output preview:
+�¹������˸��ͺ�ŵ�����������ٸ���ڼ��ڵ��ÿ͸߷壬�¹������⽻�칫�ҷ������������ο�ע����а��š���ƪ������ʾ�����ػ�������ǰ����Ӧ�Դ�ʩ��ͬʱ���ֺ�����������������������������
+--------------------------------------------------------------------------------
+[34] cluster=126 size=6 status=ok
+url: https://www.welt.de/regionales/mecklenburg-vorpommern/article69c626e2bcbf6a73533c112b/befreiter-buckelwal-schwimmt-in-luebecker-bucht.html
+output preview:
+��ͷ��������������ͺ������뿪������ؾ�Ԯ�ж��������У����Ҵ�ֻ���뻤����ȷ���䰲ȫ�������
+--------------------------------------------------------------------------------
+[35] cluster=128 size=6 status=ok
+url: https://www.abendzeitung-muenchen.de/muenchen/auf-muenchens-feiermeile-hier-eroeffnet-ein-neuer-club-art-1121333
+output preview:
+Ľ��ڽ�ӭ��һ���ر�����λ�������ǽ��������У�ͬʱ���ص����ֳ���Ҳӭ���¾��ֲ��Ŀ�ҵ���ḻ�˳��е�ҹ����ѡ��
+--------------------------------------------------------------------------------
+[36] cluster=27 size=5 status=skip_error
+url: https://www.dailymail.co.uk/news/article-15682393/dog-groomer-attacked-rival-husband-awards-ceremony-prize.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[37] cluster=85 size=5 status=ok
+url: https://www.ilgazzettino.it:443/nordest/verona/fossile_pesce_nuova_specie_scoperta_val_d_alpone_monte_postale_zaiaichthys_postalensi-7741014.html
+output preview:
+Rexi��ҧ�˶�����ʧ��������Martin R��tter�İ��������ڽ����¼ң���ر����ڶ������ý����ظ����֡�
+--------------------------------------------------------------------------------
+[38] cluster=89 size=5 status=skip_error
+url: http://www.hna.de/leben/einfach-tasty/ein-nostalgischer-genuss-eierragout-nach-omas-rezept-zr-94234463.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[39] cluster=98 size=5 status=ok
+url: https://www.larazon.es/autores/rodrigo-criado/
+output preview:
+La Raz��n��վ���¶�λ���ߵ����¶�̬�����ǲ�ͬ�������Ѷ��
+--------------------------------------------------------------------------------
+[40] cluster=102 size=5 status=skip_error
+url: http://www.merkur.de/lokales/region-holzkirchen/warngau-ort66932/emotionale-wochen-so-bereitet-sich-andreas-beilhack-aufs-buergermeisteramt-vor-94237660.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[41] cluster=105 size=5 status=skip_error
+url: https://www.zeit.de/politik/2026-03/kuba-us-blockade-regimewechsel-bert-hoffmann-giga-institut
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[42] cluster=108 size=5 status=skip_error
+url: https://www.ksta.de:443/region/leverkusen/stadt-leverkusen/leverkusen-nur-noch-wenige-mieter-fehlen-fuer-den-ex-kaufhof-1252814
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[43] cluster=109 size=5 status=skip_error
+url: https://www.laopiniondemurcia.es/semana-santa/cartagena/2026/03/27/iman-pasion-128433940.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[44] cluster=111 size=5 status=skip_error
+url: https://www.ksta.de:443/region/rhein-erft/erftstadt/erftstadt-sex-szene-trifft-sich-weiter-auf-umgebautem-a553-rastplatz-1252879
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[45] cluster=117 size=5 status=ok
+url: https://www.diariovasco.com/suplementos/gela/hernani-lanbide-heziketa-apuesta-calidad-innovacion-empleabilidad-20260323090521-nt.html
+output preview:
+�������ǵ���ҵ���˹�����ʵʩ�����������������������������ŷ�ޣ���������漰AI��������ҵ�ı�Ｐ���쵼�����֪��
+--------------------------------------------------------------------------------
+[46] cluster=122 size=5 status=skip_error
+url: https://www.lavozdegalicia.es/noticia/vigo/2026/03/27/ifevi-afronta-cinco-dias-regueton-electronica-urbana/0003_202603V27C69922.htm
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[47] cluster=129 size=5 status=skip_error
+url: https://www.20minutos.es/motor/actualidad/tras-haberlo-probado-te-contamos-por-que-opel-astra-2026-uno-compactos-mas-completos_6950806_0.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+done. batch_ts=1774597629
+latest summarize results saved to: temp_result.jsonl
+2026-03-27 15:51:14,481 | INFO | 脚本执行成功: llm_summarize.py | duration=246.03s
+2026-03-27 15:51:14,481 | INFO | ========== 本轮 pipeline 结束 | total_duration=265.23s ==========
+2026-03-27 15:51:14,481 | INFO | 距离下一轮启动还有 634.77 秒 | next_run_at=2026-03-27 16:01:49
+2026-03-27 16:11:36,889 | INFO | pipeline runner 已启动
+2026-03-27 16:11:36,889 | INFO | BASE_DIR=C:\code\news\ai-curated-news\backend
+2026-03-27 16:11:36,890 | INFO | RUN_INTERVAL_SECONDS=900
+2026-03-27 16:11:36,890 | INFO | SCRIPT_TIMEOUT_SECONDS=840
+2026-03-27 16:11:36,890 | INFO | ========== 新一轮 pipeline 开始 ==========
+2026-03-27 16:11:36,890 | INFO | 开始执行脚本: gdelt_rss_ETL.py
+2026-03-27 16:11:36,940 | WARNING | [gdelt_rss_ETL.py stderr]
+Traceback (most recent call last):
+  File "C:\code\news\ai-curated-news\backend\gdelt_rss_ETL.py", line 19, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+2026-03-27 16:11:36,940 | ERROR | 脚本执行失败: gdelt_rss_ETL.py | returncode=1 | duration=0.05s
+2026-03-27 16:11:36,941 | WARNING | 脚本失败，继续执行下一个: gdelt_rss_ETL.py
+2026-03-27 16:11:36,941 | INFO | 开始执行脚本: embedding_and_cluster.py
+2026-03-27 16:11:36,994 | WARNING | [embedding_and_cluster.py stderr]
+Traceback (most recent call last):
+  File "C:\code\news\ai-curated-news\backend\embedding_and_cluster.py", line 9, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'
+2026-03-27 16:11:36,995 | ERROR | 脚本执行失败: embedding_and_cluster.py | returncode=1 | duration=0.05s
+2026-03-27 16:11:36,995 | WARNING | 脚本失败，继续执行下一个: embedding_and_cluster.py
+2026-03-27 16:11:36,995 | INFO | 开始执行脚本: llm_summarize.py
+2026-03-27 16:11:37,045 | WARNING | [llm_summarize.py stderr]
+Traceback (most recent call last):
+  File "C:\code\news\ai-curated-news\backend\llm_summarize.py", line 9, in <module>
+    import yaml
+ModuleNotFoundError: No module named 'yaml'
+2026-03-27 16:11:37,045 | ERROR | 脚本执行失败: llm_summarize.py | returncode=1 | duration=0.05s
+2026-03-27 16:11:37,045 | WARNING | 脚本失败，继续执行下一个: llm_summarize.py
+2026-03-27 16:11:37,045 | INFO | ========== 本轮 pipeline 结束 | total_duration=0.16s ==========
+2026-03-27 16:11:37,045 | INFO | 距离下一轮启动还有 899.84 秒 | next_run_at=2026-03-27 16:26:36
+2026-03-27 16:11:48,050 | INFO | pipeline runner 已启动
+2026-03-27 16:11:48,050 | INFO | BASE_DIR=C:\code\news\ai-curated-news\backend
+2026-03-27 16:11:48,050 | INFO | RUN_INTERVAL_SECONDS=900
+2026-03-27 16:11:48,050 | INFO | SCRIPT_TIMEOUT_SECONDS=840
+2026-03-27 16:11:48,050 | INFO | ========== 新一轮 pipeline 开始 ==========
+2026-03-27 16:11:48,050 | INFO | 开始执行脚本: gdelt_rss_ETL.py
+2026-03-27 16:11:50,514 | INFO | [gdelt_rss_ETL.py stdout]
+Batch published_at: 2026-03-27T08:11:48Z
+Rows before type filter: 5442, after: 378
+Type counts:
+ type
+Quality newspaper/magazine    273
+Tabloid newspaper              47
+Commercial broadcaster         45
+Public broadcaster             13
+Done. batch_published_at=2026-03-27T08:11:48Z
+2026-03-27 16:11:50,514 | INFO | 脚本执行成功: gdelt_rss_ETL.py | duration=2.46s
+2026-03-27 16:11:50,514 | INFO | 开始执行脚本: embedding_and_cluster.py
+2026-03-27 16:12:16,128 | INFO | [embedding_and_cluster.py stdout]
+��������: ��� 24 Сʱ
+���ڿ�ʼ(UTC): 2026-03-26T08:11:55Z
+���ڽ���(UTC): 2026-03-27T08:11:55Z
+����ԭʼ������: 4041
+��ϴ��������: 4041
+ʶ����ַ��: link
+����������������: 1196
+active clusters ����: 130
+ƥ�䵽�ɴر�����: 36
+δƥ�������: 1160
+
+=== ���ν�� ===
+������⵽�ɴصı�����: 36
+��ѡ�´ض��ζ���ؾɴصĴ���: 1
+unmatched д�������: 300
+�½� cluster ��: 4
+���ڶ��η������� cluster ��: 1
+cluster_size_history ������¼��: 28
+cluster.sqlite �Ѹ��¡�
+2026-03-27 16:12:16,129 | WARNING | [embedding_and_cluster.py stderr]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]
+Loading weights: 100%|��������������������| 199/199 [00:00<00:00, 7690.09it/s]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+
+Batches:   0%|          | 0/19 [00:00<?, ?it/s]
+Batches:   5%|��         | 1/19 [00:00<00:04,  3.89it/s]
+Batches:  11%|��         | 2/19 [00:00<00:03,  4.64it/s]
+Batches:  16%|����        | 3/19 [00:00<00:03,  5.21it/s]
+Batches:  21%|����        | 4/19 [00:00<00:02,  5.70it/s]
+Batches:  26%|������       | 5/19 [00:00<00:02,  6.14it/s]
+Batches:  32%|��������      | 6/19 [00:01<00:02,  6.46it/s]
+Batches:  37%|��������      | 7/19 [00:01<00:01,  6.91it/s]
+Batches:  42%|����������     | 8/19 [00:01<00:01,  7.11it/s]
+Batches:  47%|����������     | 9/19 [00:01<00:01,  7.35it/s]
+Batches:  53%|������������    | 10/19 [00:01<00:01,  7.70it/s]
+Batches:  58%|������������    | 11/19 [00:01<00:00,  8.09it/s]
+Batches:  63%|��������������   | 12/19 [00:01<00:00,  8.28it/s]
+Batches:  68%|��������������   | 13/19 [00:01<00:00,  8.73it/s]
+Batches:  79%|����������������  | 15/19 [00:02<00:00,  9.22it/s]
+Batches:  89%|������������������ | 17/19 [00:02<00:00,  9.73it/s]
+Batches:  95%|��������������������| 18/19 [00:02<00:00,  9.35it/s]
+Batches: 100%|��������������������| 19/19 [00:02<00:00,  7.73it/s]
+2026-03-27 16:12:16,129 | INFO | 脚本执行成功: embedding_and_cluster.py | duration=25.61s
+2026-03-27 16:12:16,129 | INFO | 开始执行脚本: llm_summarize.py
+2026-03-27 16:15:29,867 | INFO | [llm_summarize.py stdout]
+clusters_to_summarize=36 min_delta=3
+[1] cluster=15 size=1991 status=ok
+url: https://www.stern.de/gesellschaft/regional/baden-wuerttemberg/moderne-kunst--hundertwasser-forum-startet-neue-schau-mit-100-werken-37259996.html
+output preview:
+[1] cluster=15 size=1991 status=skip_error
+url: https://www.stern.de/gesellschaft/regional/baden-wuerttemberg/moderne-kunst--hundertwasser-forum-startet-neue-schau-mit-100-werken-37259996.html
+error: 'gbk' codec can't encode character '\u201e' in position 434: illegal multibyte sequence
+--------------------------------------------------------------------------------
+[2] cluster=19 size=83 status=ok
+url: https://www.larazon.es/internacional/caza-eeuu-esquiva-extremis-misil-irani-esta-pirueta_2026032769c6321483aca52e0e3aedb8.html
+output preview:
+Here��s a structured summary of the key themes and recent developments from the news articles and analyses in your provided links (note: some URLs are duplicates or non-functional; I��ll focus on the most relevant, verified sources):
+
+---
+
+### **1. Military Escalation and Strikes**  
+- **Israel vs. Iran**:  
+  - Israel launched a **"wide-scale strike"** on Tehran, targeting Iran��s leadership and infrastructure (BBC Arabic, [link](https://www.bbc.com/arabic/live/cx2vygz7l2kt)).  
+  - Iran retaliated by attacking **Israeli military bases and energy facilities**, escalating tensions.  
+  - The conflict has entered its **28th day**, with both sides engaging in **precision strikes** and **cyberattacks** (CNN, [link](https://edition.cnn.com/2026/03/26/middleeast/us-israel-iran-middle-east-war-day-28-what-we-know-intl-hnk)).  
+
+- **U.S. Involvement**:  
+  - The U.S. has **not directly participated** in the fighting but has **sanctioned Iranian officials** and **supported Israel**.  
+  - The **I
+--------------------------------------------------------------------------------
+[3] cluster=103 size=40 status=skip_error
+url: https://www.eldiariomontanes.es/autor/alvaro-machin-610.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[4] cluster=127 size=35 status=ok
+url: https://www.abc.net.au/
+output preview:
+Taylor Swift��iHeartRadio���ֽ��л����������ҳƺţ��������˶�Travis Kelce�����͡�
+--------------------------------------------------------------------------------
+[5] cluster=16 size=32 status=skip_error
+url: http://www.elpuntavui.cat/?task=mescriteri.mes&format=raw&criteri=subcanal&t=20260327024037&id=3376&itemidmes=1030&subsegment=7&count=6&start=8
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[6] cluster=45 size=25 status=skip_error
+url: https://www.nbcnewyork.com/tag/hawaii/
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[7] cluster=4 size=18 status=ok
+url: https://www.infranken.de/deutschland/neues-textilgesetz-hersteller-sollen-fuer-altkleider-zahlen-art-6333665
+output preview:
+�¹�����ʵʩ�·�֯���棬Ҫ���װ������Ϊ��������մ����е����ã�ּ���ƶ�ѭ�����ò����ٷ�֯Ʒ�����������ͨ�������ҵ���Σ������ɳ���ʱ��ʵ�������ϸ������ȫ����Χ��չ����ʵ��
+--------------------------------------------------------------------------------
+[8] cluster=8 size=18 status=skip_error
+url: https://timesofindia.indiatimes.com/etimes/trending/ram-navami-surya-tilak-to-be-performed-on-ram-lalla-idol-at-ayodhya-ram-mandir-timings-muhurat-visiting-slots-and-more/articleshow/129839438.cms
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[9] cluster=21 size=18 status=skip_error
+url: https://www.sueddeutsche.de/bayern/wetter-bayern-osterferien-schnee-glaette-li.3459656
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[10] cluster=36 size=17 status=ok
+url: https://www.infranken.de/lk/franken/wetter-in-franken-dwd-warnt-vor-glatteis-schnee-und-regen-art-6333674
+output preview:
+�¹�����������շ�����������Ԥ����Ԥ�ƽ�ӭ��ǿ��ѩ����������������������������ܳ��ֵ�·��պͽ�ͨ�жϡ�����ģ����ʾ�������ǰ�����ӭ��������ѩ�����ֵ�����ѩ�����80���ף�ͬʱ���м�������Ӱ�죬���µ�·����ͳ������ѡ����Ԥ����ͨ��DWD���¹�����֣�ʵʱ��ͼ���ڷ�����
+--------------------------------------------------------------------------------
+[11] cluster=1 size=13 status=skip_error
+url: https://www.sfgate.com/news/world/article/why-pakistan-has-emerged-as-a-mediator-between-us-22155034.php
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[12] cluster=10 size=11 status=skip_error
+url: https://www.nbcdfw.com/tag/jeffrey-epstein/
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[13] cluster=60 size=11 status=skip_error
+url: http://www.tz.de/welt/meeres-gigant-wal-drama-in-der-ostsee-erneuter-rettungsversuch-von-gestrandetem-zr-94233745.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[14] cluster=112 size=11 status=skip_error
+url: https://www.hna.de/leben/wohnen/richtig-lueften-im-fruehling-dieser-zeitpunkt-spart-heizkosten-zr-94237919.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[15] cluster=55 size=10 status=ok
+url: https://www.express.de:443/koeln/feuerdrama-in-koeln-wehr-macht-in-der-nacht-schrecklichen-fund-1253163
+output preview:
+�¹���¡�Ͳ������������¼�������������ҹ�䷢��Σ����Ʒ��������ɢ��
+--------------------------------------------------------------------------------
+[16] cluster=116 size=8 status=skip_error
+url: https://www.abendzeitung-muenchen.de/panorama/ein-jahr-danach-myanmar-ringt-weiter-mit-folgen-des-bebens-art-1121570
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[17] cluster=131 size=8 status=skip_error
+url: https://www.manager-magazin.de/hbm/kuenstliche-intelligenz-gen-z-zwischen-ki-nutzung-und-sorgen-a-c836c34a-93f0-457e-847b-a56565d5db9c
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[18] cluster=71 size=7 status=skip_error
+url: https://timesofindia.indiatimes.com/entertainment/hindi/bollywood/box-office/url-dhurandhar-2-the-revenge-box-office-collection-day-9-live-ranveer-singh-rakesh-bedi-sanjay-dutt-arjun-rampal-r-madhavan-starrer-spy-thriller-inches-closer-to-netting-rs-700-crore-in-india-chases-rs-840-crore-lifetime-record-of-dhurandhar-1/articleshow/129839191.cms
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[19] cluster=99 size=7 status=skip_error
+url: https://www.diariodemallorca.es/autores/gabriel-santamarina.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[20] cluster=110 size=7 status=skip_error
+url: https://www.lexpress.fr/monde/europe/prix-de-lessence-de-lallemagne-a-litalie-comment-ils-tentent-de-limiter-la-hausse-JV7B4RUZUJAQBCXJE3EYGDSYU4/
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[21] cluster=118 size=7 status=skip_error
+url: https://www.shz.de/deutschland-welt/schleswig-holstein/umfrage-des-tages/artikel/sollte-man-den-gestrandeten-wal-retten-oder-sterben-lassen-50393869
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[22] cluster=122 size=7 status=skip_error
+url: https://www.infranken.de/deutschland/ifo-stellenabbau-etwas-langsamer-aber-keine-trendwende-art-6333692
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[23] cluster=59 size=6 status=ok
+url: https://www.focus.de/kultur/stars/melissa-naschenweng-filmkuss-mit-ferdinand-seebacher-hat-ueberwindung-gekostet_f6448f39-e556-446f-923a-8047604e9f8a.html
+output preview:
+�¹�ý��Χ��Brenda Brinkmann�����°����������ĺ������óе�����չ�����ۣ����ֹ۵���ΪӦ������˳е����ҽ��֧����
+--------------------------------------------------------------------------------
+[24] cluster=94 size=6 status=ok
+url: https://www.stern.de/historischer-schmuck-als-beute--wenn-vor-huebscher-kulisse-geraubt-und-gemordet-wird-37260070.html
+output preview:
+��ƪ�����۽���ʷ�鱦���Ӷ��¼�����¶�����������·�����������ıɱ������ʾ�������ʷ���ﱳ����
+--------------------------------------------------------------------------------
+[25] cluster=132 size=6 status=skip_error
+url: https://www.stern.de/gesellschaft/regional/baden-wuerttemberg/glaette--schnee-und-eis-sorgen-fuer-zahlreiche-unfaelle-37260030.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[26] cluster=133 size=6 status=ok
+url: https://www.abc.es/internacional/supervivientes-epstein-demandan-gobierno-estadounidense-google-revelacion-20260327074839-nt.html
+output preview:
+Epstein���Ҵ��߼�����������������Google��ָ����й¶˽����Ϣ�������漰˾��������������������������˽Ȩ����Ϣ͸���ȵ����顣
+--------------------------------------------------------------------------------
+[27] cluster=27 size=5 status=ok
+url: https://www.dailymail.co.uk/news/article-15682393/dog-groomer-attacked-rival-husband-awards-ceremony-prize.html
+output preview:
+֥�Ӹ�һ����������Greater Grand Crossing��������Ű��19ֻ���ر����ӵĹ�������������¼��������ﱣ����ע��
+--------------------------------------------------------------------------------
+[28] cluster=89 size=5 status=skip_error
+url: http://www.hna.de/leben/einfach-tasty/ein-nostalgischer-genuss-eierragout-nach-omas-rezept-zr-94234463.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[29] cluster=102 size=5 status=ok
+url: http://www.merkur.de/lokales/region-holzkirchen/warngau-ort66932/emotionale-wochen-so-bereitet-sich-andreas-beilhack-aufs-buergermeisteramt-vor-94237660.html
+output preview:
+�����͵¹������������չ���г�ѡ�ٵ�׼������ȷ�ϡ�La Rochelleѡ��֧��Olivier Falorni��ѡ�г���ǿ������������ⳬԽ�򵥸��棻�¹�Warngau��Andreas Beilhack��Ϊ�г�������������׼�������轼��Blanc-Mesnil��Demba Traor������ѡ���Ͽɶ���ѡ�����ֶ�Ԫ�����Ե����ơ�
+--------------------------------------------------------------------------------
+[30] cluster=105 size=5 status=skip_error
+url: https://www.zeit.de/politik/2026-03/kuba-us-blockade-regimewechsel-bert-hoffmann-giga-institut
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[31] cluster=108 size=5 status=ok
+url: https://www.ksta.de:443/region/leverkusen/stadt-leverkusen/leverkusen-nur-noch-wenige-mieter-fehlen-fuer-den-ex-kaufhof-1252814
+output preview:
+�ڵ¹������ܼ�ͥ������ﵽ4000ŷԪ���������ҵ����������ס������ӳ���߰��ķ������⡣ͬʱ������Ϊ������Ⱥ���ṩס��֧�֣���Ϊ��ȡ�����������֧����𣬲������Ѵ�Ϊ�е�Ѻ���Ի���ס��ѹ����
+--------------------------------------------------------------------------------
+[32] cluster=109 size=5 status=skip_error
+url: https://www.laopiniondemurcia.es/semana-santa/cartagena/2026/03/27/iman-pasion-128433940.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[33] cluster=111 size=5 status=skip_error
+url: https://www.ksta.de:443/region/rhein-erft/erftstadt/erftstadt-sex-szene-trifft-sich-weiter-auf-umgebautem-a553-rastplatz-1252879
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[34] cluster=129 size=5 status=skip_error
+url: https://www.20minutos.es/motor/actualidad/tras-haberlo-probado-te-contamos-por-que-opel-astra-2026-uno-compactos-mas-completos_6950806_0.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[35] cluster=134 size=5 status=ok
+url: https://www.welt.de/regionales/baden-wuerttemberg/article69c62daeaf187d606b814953/kretschmann-will-nach-letztem-arbeitstag-ausschlafen.html
+output preview:
+�¹��͵�-���ڱ���ǰ�ݳ�����������ʾ�����������һ�������պú���Ϣ����ҵ¹�ý���硶���籨�������͵��ձ������� Stern����־�����������ܿ�����������һ��Ϣ����ʾ������ж�λ����ݡ�
+--------------------------------------------------------------------------------
+[36] cluster=135 size=5 status=ok
+url: https://www.ideal.es/motor/reportajes/camion-basura-fabricado-materiales-reciclados-20260326090100-ntrc.html
+output preview:
+����Ƴ�ʹ�û��ղ�������Ļ�����������ͬʱ�ƽ������������������������ﴦ��Ч�ʡ�
+--------------------------------------------------------------------------------
+done. batch_ts=1774599136
+latest summarize results saved to: temp_result.jsonl
+2026-03-27 16:15:29,868 | INFO | 脚本执行成功: llm_summarize.py | duration=193.74s
+2026-03-27 16:15:29,868 | INFO | ========== 本轮 pipeline 结束 | total_duration=221.82s ==========
+2026-03-27 16:15:29,868 | INFO | 距离下一轮启动还有 678.18 秒 | next_run_at=2026-03-27 16:26:48
+2026-03-27 16:26:48,056 | INFO | ========== 新一轮 pipeline 开始 ==========
+2026-03-27 16:26:48,056 | INFO | 开始执行脚本: gdelt_rss_ETL.py
+2026-03-27 16:26:50,464 | INFO | [gdelt_rss_ETL.py stdout]
+Removed 1 domain codes due to duplicated (title, domain) rows > 3.
+Blacklisted domains: sfgate.com
+Deleted 4 historical rows from blacklisted domains.
+Batch published_at: 2026-03-27T08:26:48Z
+Rows before type filter: 6647, after: 489
+Type counts:
+ type
+Quality newspaper/magazine    413
+Public broadcaster             43
+Tabloid newspaper              26
+Commercial broadcaster          7
+Done. batch_published_at=2026-03-27T08:26:48Z
+2026-03-27 16:26:50,465 | INFO | 脚本执行成功: gdelt_rss_ETL.py | duration=2.41s
+2026-03-27 16:26:50,465 | INFO | 开始执行脚本: embedding_and_cluster.py
+2026-03-27 16:27:09,375 | INFO | [embedding_and_cluster.py stdout]
+��������: ��� 24 Сʱ
+���ڿ�ʼ(UTC): 2026-03-26T08:26:56Z
+���ڽ���(UTC): 2026-03-27T08:26:56Z
+����ԭʼ������: 4526
+��ϴ��������: 4526
+ʶ����ַ��: link
+����������������: 1349
+active clusters ����: 135
+ƥ�䵽�ɴر�����: 56
+δƥ�������: 1293
+
+=== ���ν�� ===
+������⵽�ɴصı�����: 56
+��ѡ�´ض��ζ���ؾɴصĴ���: 1
+unmatched д�������: 119
+�½� cluster ��: 16
+���ڶ��η������� cluster ��: 0
+cluster_size_history ������¼��: 48
+cluster.sqlite �Ѹ��¡�
+2026-03-27 16:27:09,375 | WARNING | [embedding_and_cluster.py stderr]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]
+Loading weights: 100%|��������������������| 199/199 [00:00<00:00, 6743.09it/s]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+
+Batches:   0%|          | 0/22 [00:00<?, ?it/s]
+Batches:   5%|��         | 1/22 [00:00<00:05,  3.51it/s]
+Batches:   9%|��         | 2/22 [00:00<00:04,  4.24it/s]
+Batches:  14%|����        | 3/22 [00:00<00:04,  4.67it/s]
+Batches:  18%|����        | 4/22 [00:00<00:03,  4.82it/s]
+Batches:  23%|������       | 5/22 [00:01<00:03,  5.23it/s]
+Batches:  27%|������       | 6/22 [00:01<00:02,  5.49it/s]
+Batches:  32%|��������      | 7/22 [00:01<00:02,  5.67it/s]
+Batches:  36%|��������      | 8/22 [00:01<00:02,  5.45it/s]
+Batches:  41%|��������      | 9/22 [00:01<00:02,  5.73it/s]
+Batches:  45%|����������     | 10/22 [00:01<00:01,  6.00it/s]
+Batches:  50%|����������     | 11/22 [00:01<00:01,  6.45it/s]
+Batches:  55%|������������    | 12/22 [00:02<00:01,  6.84it/s]
+Batches:  59%|������������    | 13/22 [00:02<00:01,  7.21it/s]
+Batches:  64%|��������������   | 14/22 [00:02<00:01,  7.45it/s]
+Batches:  68%|��������������   | 15/22 [00:02<00:00,  7.46it/s]
+Batches:  73%|����������������  | 16/22 [00:02<00:00,  7.48it/s]
+Batches:  77%|����������������  | 17/22 [00:02<00:00,  7.74it/s]
+Batches:  82%|������������������ | 18/22 [00:02<00:00,  8.06it/s]
+Batches:  91%|������������������ | 20/22 [00:03<00:00,  8.27it/s]
+Batches:  95%|��������������������| 21/22 [00:03<00:00,  8.23it/s]
+Batches: 100%|��������������������| 22/22 [00:03<00:00,  6.80it/s]
+2026-03-27 16:27:09,376 | INFO | 脚本执行成功: embedding_and_cluster.py | duration=18.91s
+2026-03-27 16:27:09,376 | INFO | 开始执行脚本: llm_summarize.py
+2026-03-27 16:30:31,074 | INFO | [llm_summarize.py stdout]
+clusters_to_summarize=44 min_delta=3
+[1] cluster=31 size=184 status=ok
+url: https://www.diariodesevilla.es/semana_santa/ver-viernes-dolores-sevilla-2026_0_2006124499.html
+output preview:
+2026����������ؽ��ٰ�ʢ���ʥ�ܣ�Semana Santa�����������ά���ǡ������Ƕ����¡������ȵص��ڽ����С��Ļ���ʽ����ʷ���֡���ﱸ������ȫ��չ�������ֳ�������������ͨ�����и���Ϊ������׼��������ȱ�������ߣ����������б�����ͣ��ͬʱ��������ÿͺ������ƽ�ͨ���ӣ����籣�������������������ǵ�ֱ��𳵡����⣬ʥ���ڼ仹���Ƴ���ɫ�����������ҹ��ƹ��㼰�����Ƕ����µ�ʮ����������չ�ִ�ͳ���ִ��Ľ�ϡ�
+--------------------------------------------------------------------------------
+[2] cluster=103 size=54 status=skip_error
+url: https://www.eldiariomontanes.es/autor/alex-gomez-magaldi-2369.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[3] cluster=16 size=32 status=skip_error
+url: http://www.elpuntavui.cat/?task=mescriteri.mes&format=raw&criteri=subcanal&t=20260327024037&id=3376&itemidmes=1030&subsegment=7&count=6&start=8
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[4] cluster=14 size=26 status=ok
+url: https://www.laprovincia.es/mundo/2026/03/27/firma-trump-aparecera-billetes-dolar-primera-vez-presidente-en-ejercicio-128472460.html
+output preview:
+���������д���������ǩ������Ԫֽ�ң��Լ�����������250���ꡣ������ʷ���״���������ͳ��ǩ��������ֽ���ϣ������յ�ǩ�����������������ǩ������Ϊֽ���ϵ���Ԫ�ء�
+--------------------------------------------------------------------------------
+[5] cluster=45 size=25 status=skip_error
+url: https://www.nbcnewyork.com/tag/hawaii/
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[6] cluster=21 size=19 status=ok
+url: https://www.merkur.de/bayern/wetter-in-bayern-schnee-und-frost-am-ferienwochenende-zr-94237944.html
+output preview:
+�¹��ͷ����ǺͰ͵�-���ڱ�����ӭ��������ѩ����������ڼ����ڼ��س��ֱ�ѩ�����ֵͺ��ε���Ҳ���ֻ�ѩ��������Ԥ����ĩ��ӭ��������ѩ������������ͨ���ƺͻ���Ӱ�죬����������÷���׼����
+--------------------------------------------------------------------------------
+[7] cluster=8 size=18 status=skip_error
+url: https://timesofindia.indiatimes.com/etimes/trending/ram-navami-surya-tilak-to-be-performed-on-ram-lalla-idol-at-ayodhya-ram-mandir-timings-muhurat-visiting-slots-and-more/articleshow/129839438.cms
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[8] cluster=147 size=18 status=ok
+url: https://www.larazon.es/economia/precios-disparan-33-marzo-efecto-guerra-iran_2026032769c6390f6b2f88359258b0ee.html
+output preview:
+����ս������ȫ���ͼ����ǣ�������ۺ�ͨ�����ͣ�Ӱ����������ɱ�����������⳵�������ߣ��¹���������ʩѹҪ��Ӧ�Ը��ͼۣ�ͬʱս�������¾����ж���вƽ��ȫ����������Դ���ߺͽ�ͨ���Ƶ����ۡ�
+--------------------------------------------------------------------------------
+[9] cluster=95 size=15 status=ok
+url: https://www.elperiodicoextremadura.com/internacional/2026/03/27/eeuu-plantea-enviar-soldados-guerra-iran-advierte-oriente-medio-israel-trump-128473123.html
+output preview:
+�����ƻ����ж�����10,000ʿ�������ʾ��潫��������������տ������ж���ȡ�����ж�����Ǵ�¥��������ز��𣬲��ֱ����ᵽ���ܵĵ�����������մ���ƻ���
+--------------------------------------------------------------------------------
+[10] cluster=83 size=14 status=ok
+url: https://www.ilgiornale.it/news/guerra/iran-pentagono-pronto-inviare-10mila-uomini-2643999.html
+output preview:
+�����������ж���ǲ10,000��ʿ����Ӧ�����ʾ��ƣ����ý�屨������Ǵ�¥��������һ�������ж�������ͬʱ������������ָ�ƻ�������ʵʩ"���մ��"����ض�̬�����������Ե�����ͻ�����ĵ��ǡ�
+--------------------------------------------------------------------------------
+[11] cluster=107 size=14 status=skip_error
+url: https://www.eldiariomontanes.es/de-tiendas/ofertas/quedes-suministro-chollos-semanales-nuevo-top-previo-20260327101803-ntrc.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[12] cluster=1 size=13 status=skip_error
+url: https://www.sfgate.com/news/world/article/why-pakistan-has-emerged-as-a-mediator-between-us-22155034.php
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[13] cluster=112 size=12 status=ok
+url: https://www.merkur.de/leben/wohnen/richtig-lueften-im-fruehling-dieser-zeitpunkt-spart-heizkosten-zr-94237919.html
+output preview:
+�¹����ý�巢�����£�ָ����ȷͨ��ʱ���Խ�ʡů�����ã�ǿ������ͨ��ʱ���Խ���ȡů��֧����Ҫ�ԡ�
+--------------------------------------------------------------------------------
+[14] cluster=10 size=11 status=ok
+url: https://www.nbcdfw.com/tag/jeffrey-epstein/
+output preview:
+�ü�Ⱥ��������NHL����ְ֧ҵ������ӵ����ţ���Dallas Stars��Texas Rangers��Los Angeles Dodgers�ȣ��漰�������º���ض�̬��
+--------------------------------------------------------------------------------
+[15] cluster=60 size=11 status=skip_error
+url: http://www.tz.de/welt/meeres-gigant-wal-drama-in-der-ostsee-erneuter-rettungsversuch-von-gestrandetem-zr-94233745.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[16] cluster=99 size=11 status=skip_error
+url: https://www.laprovincia.es/autores/gabriel-santamarina.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[17] cluster=126 size=10 status=ok
+url: https://www.wiwo.de/technologie/forschung/gestrandeter-wal-in-sh-befreiter-buckelwal-auf-kurs-aus-luebecker-bucht/100212367.html
+output preview:
+��ͷ���ڵ¹��������屻�ɹ��ͷź�����Զ�뺣�������ش�ֻ��Э���䷵�������ƪ������ʾ�þ������������ζ���Ŀǰ��Ԯ�ж����������С�
+--------------------------------------------------------------------------------
+[18] cluster=122 size=9 status=skip_error
+url: https://www.handelsblatt.com/politik/deutschland/arbeit-ifo-stellenabbau-etwas-langsamer-aber-keine-trendwende/100212377.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[19] cluster=144 size=9 status=ok
+url: https://www.dw.com/tr/u%C5%9Fak-belediye-ba%C5%9Fkan%C4%B1-%C3%B6zkan-yal%C4%B1m-g%C3%B6zalt%C4%B1na-al%C4%B1nd%C4%B1/a-76556041
+output preview:
+���ڱ�����ضȲ��ߣ������NULL
+--------------------------------------------------------------------------------
+[20] cluster=116 size=8 status=skip_error
+url: https://www.abendzeitung-muenchen.de/panorama/ein-jahr-danach-myanmar-ringt-weiter-mit-folgen-des-bebens-art-1121570
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[21] cluster=131 size=8 status=skip_error
+url: https://www.manager-magazin.de/hbm/kuenstliche-intelligenz-gen-z-zwischen-ki-nutzung-und-sorgen-a-c836c34a-93f0-457e-847b-a56565d5db9c
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[22] cluster=145 size=8 status=ok
+url: https://www.diariodemallorca.es/nacional/2026/03/27/julio-iglesias-fiscalia-audiencia-nacional-cara-a-cara-contencioso-128471142.html
+output preview:
+Julio Iglesias����������������Ʒ�Ժչ�����ɶԿ���˫���������鰸���Ĳþ�Ȩ����ֱ�ӽ��棬������˾������Ȩ�����Ĺ�ע��
+--------------------------------------------------------------------------------
+[23] cluster=151 size=8 status=ok
+url: https://www.laopinioncoruna.es/autores/ana-rodriguez.html
+output preview:
+���������ý���硶El Peri��dico de Extremadura����La Provincia���͡�EL CORREO GALLEGO��������ר������Juan Jos�� Fern��ndez�����������Ŷ�̬����ػ��⣬��ʾ���ڵط�ý���е���Ҫ�ԡ�
+--------------------------------------------------------------------------------
+[24] cluster=71 size=7 status=skip_error
+url: https://timesofindia.indiatimes.com/entertainment/hindi/bollywood/box-office/url-dhurandhar-2-the-revenge-box-office-collection-day-9-live-ranveer-singh-rakesh-bedi-sanjay-dutt-arjun-rampal-r-madhavan-starrer-spy-thriller-inches-closer-to-netting-rs-700-crore-in-india-chases-rs-840-crore-lifetime-record-of-dhurandhar-1/articleshow/129839191.cms
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[25] cluster=110 size=7 status=ok
+url: https://www.lexpress.fr/monde/europe/prix-de-lessence-de-lallemagne-a-litalie-comment-ils-tentent-de-limiter-la-hausse-JV7B4RUZUJAQBCXJE3EYGDSYU4/
+output preview:
+��ƪ����ָ��������¹���ѡ��Ͷ�ʹ�Ʊ�ͻ�����ص���̽���˱����ԭ����Է��յĵ��ǻ��г����Ĳ��㡣
+--------------------------------------------------------------------------------
+[26] cluster=118 size=7 status=ok
+url: https://www.shz.de/deutschland-welt/schleswig-holstein/umfrage-des-tages/artikel/sollte-man-den-gestrandeten-wal-retten-oder-sterben-lassen-50393869
+output preview:
+�����ǳ�¼������������ۣ���Ԯ�ж����������С������෽Ŭ������ǳ�����ѱ��ɹ���ȣ��ֳ���Ԯ�Ŷ�ʹ�����˻�Э��Ѱ����λ�ã����������һ���жϾ�Ԯ������ר��ȷ�Ͼ����ѻ�ȣ���ػ���Ҳ������Ұ�����ﱣ���������Ԥ������̽�֡�
+--------------------------------------------------------------------------------
+[27] cluster=143 size=7 status=ok
+url: https://www.20minutos.es/tecnologia/moviles-dispositivos/tienes-un-termo-electrico-si-le-acoplas-este-dispositivo-puedes-reducir-su-consumo-ahorrar-factura_6951123_0.html
+output preview:
+��Դ�ɱ������������������ע��������������˾���������Ӱ�������ߣ��¹�������ʿǿ����Դ�Ծ��õĳ����ͬʱ���ֳ��綯��������ȼ�ͼ۸����Ƕ����ӡ����ֹ���̽��ͨ����ѵ��������������ȶ���Դ�۸���ش�ʩ��Ӱ���Ϊ���齹�㡣
+--------------------------------------------------------------------------------
+[28] cluster=105 size=6 status=ok
+url: https://www.sudouest.fr/international/etats-unis/cuba-deux-bateaux-qui-apportaient-de-l-aide-humanitaire-ont-disparu-la-marine-mexicaine-les-recherche-28465900.php
+output preview:
+�Ű����ٶ���Σ���������˵�����Ԯ����ʧ���������ʹ�ע��ī���纣��չ����Ѱ��ͬʱ���Ű��ڴ�������д������ѣ���������ì��͹�ԣ����ڿ��ѱ����ӡ��Ű����쵼����������̸�н�չ��Ϊ���㣬�������ԹŰ;��ƵĹ��г������¡�
+--------------------------------------------------------------------------------
+[29] cluster=132 size=6 status=skip_error
+url: https://www.stern.de/gesellschaft/regional/baden-wuerttemberg/glaette--schnee-und-eis-sorgen-fuer-zahlreiche-unfaelle-37260030.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[30] cluster=138 size=6 status=ok
+url: https://www.diariodemallorca.es/medio-ambiente/2026/03/27/afecta-corazon-exposicion-continuada-humo-128471693.html
+output preview:
+��ƪ����ָ�������ڱ�¶�ڲ��ͳ����ŷŵ������л�����ཡ���������Ӱ�졣
+--------------------------------------------------------------------------------
+[31] cluster=139 size=6 status=skip_error
+url: https://timesofindia.indiatimes.com/education/news/nios-result-2026-for-ode-exams-released-at-results-nios-ac-in-direct-link-to-download-scorecard-here/articleshow/129840550.cms
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[32] cluster=140 size=6 status=skip_error
+url: https://timesofindia.indiatimes.com/tv/news/hindi/exclusive-lucknow-rolls-camera-for-tv-actors-web-venture/articleshow/129840067.cms
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[33] cluster=148 size=6 status=ok
+url: https://www.diariodemallorca.es/economia/2026/03/27/banca-espanola-prestamos-toxicos-128471031.html
+output preview:
+���������н��ж����������2013�����������ˮƽ��
+--------------------------------------------------------------------------------
+[34] cluster=89 size=5 status=ok
+url: http://www.hna.de/leben/einfach-tasty/ein-nostalgischer-genuss-eierragout-nach-omas-rezept-zr-94234463.html
+output preview:
+����¹�ý��ת�ر�������һ����������ĸ�ļ�������ʳ��������ͥ����ȳ���������Ϊ���л����黳�ľ���ҳ�������
+--------------------------------------------------------------------------------
+[35] cluster=109 size=5 status=skip_error
+url: https://www.laopiniondemurcia.es/semana-santa/cartagena/2026/03/27/iman-pasion-128433940.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[36] cluster=111 size=5 status=ok
+url: https://www.ksta.de:443/region/rhein-erft/erftstadt/erftstadt-sex-szene-trifft-sich-weiter-auf-umgebautem-a553-rastplatz-1252879
+output preview:
+��������Գ��ż��Է����¼����漰�����Գ��š����ٹ�·��Ϣ���Ծۼ����Ա����ӵ�������⡣
+--------------------------------------------------------------------------------
+[37] cluster=129 size=5 status=ok
+url: https://www.20minutos.es/motor/actualidad/tras-haberlo-probado-te-contamos-por-que-opel-astra-2026-uno-compactos-mas-completos_6950806_0.html
+output preview:
+Opel��Astra��Ϊ��ͥ�ó���ȫ��ѡ��ƾ����ȫ������ú�ʵ���ԣ������ý����Ϊ2026����ֵ���ڴ��Ľ����ͳ�֮һ��������ʾ���ڿռ�������Է������ͻ������Ϊ��ͥ�û�������ѡ��
+--------------------------------------------------------------------------------
+[38] cluster=136 size=5 status=skip_error
+url: https://www.diariodeibiza.es/sociedad/2026/03/27/deteccion-maltrato-infantil-atencion-primaria-hospitales-128471370.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[39] cluster=137 size=5 status=ok
+url: https://www.granadahoy.com/gente/rosalia-obligada-suspender-concierto-milan_0_2006302556.html
+output preview:
+Rosal��a��ʳ���ж����ò�ȡ��ԭ�����������ݳ��ᣬ���ý�����������һ��Ϣ��
+--------------------------------------------------------------------------------
+[40] cluster=141 size=5 status=skip_error
+url: http://www.hna.de/leute/thomas-gottschalk-macht-krebs-erkrankung-oeffentlich-fotos-seiner-tv-auftritte-nach-der-diagnose-zr-94062516.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[41] cluster=142 size=5 status=ok
+url: https://www.elperiodico.com/es/tele/20260327/sandra-sabates-intermedio-lasexta-128471285
+output preview:
+������������Sandra Sabat��s�ڽ�Ŀ��El intermedio���л�Ӧ������ǿ��Ӧ����������Դ����ͼ����Ϊ�������ɱ��⵫�����ԶԴ���
+--------------------------------------------------------------------------------
+[42] cluster=146 size=5 status=skip_error
+url: https://www.larazon.es/lifestyle/moda/matilde-belgica-despide-noruega-guino-mas-iconico-jackie-kennedy-sombrero-pillbox-que-eleva-look-azul_2026032769c6241783aca52e0e3ae4ac.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[43] cluster=149 size=5 status=skip_error
+url: https://www.eldia.es/deportes/2026/03/23/copa-espana-escalada-caceres-horarios-128292208.html
+error: Model returned null-like content
+--------------------------------------------------------------------------------
+[44] cluster=150 size=5 status=ok
+url: https://www.elperiodicoextremadura.com/deportes/2026/03/26/caceres-lista-vibrar-copa-espana-128433921.html
+output preview:
+������˹��Ϊ�μ����������ұ�������׼�������س����ڴ���
+--------------------------------------------------------------------------------
+done. batch_ts=1774600030
+latest summarize results saved to: temp_result.jsonl
+2026-03-27 16:30:31,076 | INFO | 脚本执行成功: llm_summarize.py | duration=201.70s
+2026-03-27 16:30:31,076 | INFO | ========== 本轮 pipeline 结束 | total_duration=223.02s ==========
+2026-03-27 16:30:31,076 | INFO | 距离下一轮启动还有 676.98 秒 | next_run_at=2026-03-27 16:41:48

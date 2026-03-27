@@ -1,0 +1,28 @@
+@import './base.css';
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  /* 不要用模板默认的 display:flex + place-items:center，否则宽屏会居中导致两侧大空白 */
+  display: block;
+}
+
+/* 关键：去掉 max-width/margin auto/padding，让应用占满全宽 */
+#app {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+/* 如果你想保留一点安全边距（可选），取消注释这一段 */
+/*
+#app {
+  padding: 0 18px;
+}
+*/

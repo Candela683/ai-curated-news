@@ -1,0 +1,11 @@
+rss:
+  url: "http://data.gdeltproject.org/gdeltv3/gal/feed.rss"
+
+database:
+  path: "gdelt_rss.sqlite"
+
+limits:
+  max_rows: 20000
+  time: 86400
+ 
+
